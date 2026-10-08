@@ -151,7 +151,7 @@ justify-content:space-between;
 margin-bottom:10px;
 box-shadow:0 5px 18px #00000008;
 cursor:pointer;
-transition:.2s
+transition:.15s
 }
 
 .coin:active{
@@ -201,20 +201,6 @@ font-size:12px
 .red{
 color:#e54848;
 font-size:12px
-}
-
-.live-dot{
-display:inline-block;
-width:7px;
-height:7px;
-background:#20a66a;
-border-radius:50%;
-margin-right:5px
-}
-
-.loading{
-color:#999;
-font-size:13px
 }
 
 .bottom{
@@ -350,55 +336,85 @@ text-align:center
 
 </header>
 
+
 <main class="container">
 
+
 <section class="banner">
+
 <h1>Welcome to EliteHub</h1>
+
 <p>Your modern crypto trading experience</p>
+
 </section>
+
 
 <section class="deposit">
 
 <div class="deposit-top">
 
 <div>
+
 <h3>Total Balance</h3>
+
 <div class="balance">$0.00</div>
+
 </div>
 
-<button class="btn" onclick="openDeposit()">Deposit</button>
+<button class="btn"
+onclick="openDeposit()">
+Deposit
+</button>
 
 </div>
 
 </section>
 
+
 <div class="quick">
 
-<div><b>💰</b>Earn</div>
-<div><b>🔄</b>Trade</div>
-<div><b>🤝</b>P2P</div>
-<div><b>🛡️</b>Security</div>
+<div>
+<b>💰</b>
+Earn
+</div>
+
+<div>
+<b>🔄</b>
+Trade
+</div>
+
+<div>
+<b>🤝</b>
+P2P
+</div>
+
+<div>
+<b>🛡️</b>
+Security
+</div>
 
 </div>
+
 
 <div class="section-title">
 
 <h2>Popular Coins</h2>
 
-<span>
-<span class="live-dot"></span>Live Market
-</span>
+<span>View all</span>
 
 </div>
 
 
 <!-- BITCOIN -->
 
-<div class="coin" onclick="openChart('BTCUSDT','Bitcoin','BTC')">
+<div class="coin"
+onclick="openChart('BTCUSDT','Bitcoin','BTC')">
 
 <div class="coin-left">
 
-<div class="coin-icon">₿</div>
+<div class="coin-icon">
+₿
+</div>
 
 <div class="coin-name">
 
@@ -412,9 +428,13 @@ text-align:center
 
 <div class="price">
 
-<b id="BTCUSDT-price" class="loading">Loading...</b>
+<b id="BTCUSDT-price">
+Loading...
+</b>
 
-<span id="BTCUSDT-change" class="loading">--</span>
+<span id="BTCUSDT-change">
+--
+</span>
 
 </div>
 
@@ -423,11 +443,14 @@ text-align:center
 
 <!-- ETHEREUM -->
 
-<div class="coin" onclick="openChart('ETHUSDT','Ethereum','ETH')">
+<div class="coin"
+onclick="openChart('ETHUSDT','Ethereum','ETH')">
 
 <div class="coin-left">
 
-<div class="coin-icon">Ξ</div>
+<div class="coin-icon">
+Ξ
+</div>
 
 <div class="coin-name">
 
@@ -441,9 +464,13 @@ text-align:center
 
 <div class="price">
 
-<b id="ETHUSDT-price" class="loading">Loading...</b>
+<b id="ETHUSDT-price">
+Loading...
+</b>
 
-<span id="ETHUSDT-change" class="loading">--</span>
+<span id="ETHUSDT-change">
+--
+</span>
 
 </div>
 
@@ -452,11 +479,14 @@ text-align:center
 
 <!-- LITECOIN -->
 
-<div class="coin" onclick="openChart('LTCUSDT','Litecoin','LTC')">
+<div class="coin"
+onclick="openChart('LTCUSDT','Litecoin','LTC')">
 
 <div class="coin-left">
 
-<div class="coin-icon">Ł</div>
+<div class="coin-icon">
+Ł
+</div>
 
 <div class="coin-name">
 
@@ -470,9 +500,13 @@ text-align:center
 
 <div class="price">
 
-<b id="LTCUSDT-price" class="loading">Loading...</b>
+<b id="LTCUSDT-price">
+Loading...
+</b>
 
-<span id="LTCUSDT-change" class="loading">--</span>
+<span id="LTCUSDT-change">
+--
+</span>
 
 </div>
 
@@ -483,18 +517,21 @@ text-align:center
 
 <h2>Market</h2>
 
-<span>Real Data</span>
+<span>View all</span>
 
 </div>
 
 
 <!-- POLKADOT -->
 
-<div class="coin" onclick="openChart('DOTUSDT','Polkadot','DOT')">
+<div class="coin"
+onclick="openChart('DOTUSDT','Polkadot','DOT')">
 
 <div class="coin-left">
 
-<div class="coin-icon">D</div>
+<div class="coin-icon">
+D
+</div>
 
 <div class="coin-name">
 
@@ -508,13 +545,18 @@ text-align:center
 
 <div class="price">
 
-<b id="DOTUSDT-price" class="loading">Loading...</b>
+<b id="DOTUSDT-price">
+Loading...
+</b>
 
-<span id="DOTUSDT-change" class="loading">--</span>
+<span id="DOTUSDT-change">
+--
+</span>
 
 </div>
 
 </div>
+
 
 </main>
 
@@ -522,28 +564,43 @@ text-align:center
 <nav class="bottom">
 
 <div class="active">
+
 <b>▣</b>
+
 Assets
+
 </div>
 
 <div>
+
 <b>◈</b>
+
 Contract
+
 </div>
 
 <div>
+
 <b>⇄</b>
+
 Trade
+
 </div>
 
 <div>
+
 <b>⌁</b>
+
 Market
+
 </div>
 
 <div>
+
 <b>⌂</b>
+
 Home
+
 </div>
 
 </nav>
@@ -551,37 +608,50 @@ Home
 
 <!-- DEPOSIT MODAL -->
 
-<div class="modal" id="depositModal">
+<div class="modal"
+id="depositModal">
 
 <div class="modal-box">
+
 
 <div class="modal-header">
 
 <h2>Deposit</h2>
 
-<button class="close" onclick="closeDeposit()">×</button>
+<button class="close"
+onclick="closeDeposit()">
+×
+</button>
 
 </div>
+
 
 <div class="network">
 
 <small>Network</small>
 
-<strong>USDT — TRC20</strong>
+<strong>
+USDT — TRC20
+</strong>
 
 </div>
 
-<div class="address" id="walletAddress">
+
+<div class="address"
+id="walletAddress">
 
 TTq9DKbdFbK1rjD6XymsfQF25GPJ5w6vye
 
 </div>
 
-<button class="copy" onclick="copyAddress()">
+
+<button class="copy"
+onclick="copyAddress()">
 
 Copy Address
 
 </button>
+
 
 <div class="demo-note">
 
@@ -590,6 +660,7 @@ Deposits are not automatically credited at this stage.
 
 </div>
 
+
 </div>
 
 </div>
@@ -597,26 +668,35 @@ Deposits are not automatically credited at this stage.
 
 <script>
 
-/* ==============================
+
+/* =========================
    DEPOSIT
-============================== */
+========================= */
 
 function openDeposit(){
 
-document.getElementById("depositModal").style.display="flex";
+document.getElementById(
+"depositModal"
+).style.display="flex";
 
 }
+
 
 function closeDeposit(){
 
-document.getElementById("depositModal").style.display="none";
+document.getElementById(
+"depositModal"
+).style.display="none";
 
 }
+
 
 function copyAddress(){
 
 const address =
-document.getElementById("walletAddress").innerText;
+document.getElementById(
+"walletAddress"
+).innerText;
 
 navigator.clipboard.writeText(address);
 
@@ -625,15 +705,18 @@ alert("Address copied");
 }
 
 
-/* ==============================
-   LIVE CRYPTO PRICES
-============================== */
+/* =========================
+   LIVE MARKET DATA
+========================= */
 
 const coins = [
 
 "BTCUSDT",
+
 "ETHUSDT",
+
 "LTCUSDT",
+
 "DOTUSDT"
 
 ];
@@ -655,27 +738,41 @@ await response.json();
 coins.forEach(symbol=>{
 
 const coin =
-data.find(item=>item.symbol===symbol);
+data.find(
+item=>item.symbol===symbol
+);
+
 
 if(!coin) return;
 
 
 const price =
-parseFloat(coin.lastPrice);
+parseFloat(
+coin.lastPrice
+);
+
 
 const change =
-parseFloat(coin.priceChangePercent);
+parseFloat(
+coin.priceChangePercent
+);
 
 
 const priceElement =
-document.getElementById(symbol+"-price");
+document.getElementById(
+symbol+"-price"
+);
+
 
 const changeElement =
-document.getElementById(symbol+"-change");
+document.getElementById(
+symbol+"-change"
+);
 
 
 priceElement.innerText =
-"$"+price.toLocaleString(
+"$"+
+price.toLocaleString(
 "en-US",
 {
 minimumFractionDigits:2,
@@ -708,7 +805,868 @@ error
 }
 
 
-/* FIRST LOAD */
+/* =========================
+   OPEN COIN PAGE
+========================= */
+
+function openChart(
+symbol,
+name,
+code
+){
+
+window.location.href =
+"chart.html?symbol="+
+encodeURIComponent(symbol)+
+"&name="+
+encodeURIComponent(name)+
+"&code="+
+encodeURIComponent(code);
+
+}
+
+
+/* =========================
+   START LIVE PRICES
+========================= */
+
+loadPrices();
+
+
+/* UPDATE EVERY 5 SECONDS */
+
+setInterval(
+loadPrices,<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EliteHub</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,sans-serif;
+background:#f7f7fb;
+color:#191827;
+padding-bottom:80px
+}
+
+header{
+height:64px;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 18px;
+border-bottom:1px solid #eee;
+position:sticky;
+top:0;
+z-index:5
+}
+
+.logo{
+font-size:23px;
+font-weight:800;
+color:#6246e5
+}
+
+.icons{
+display:flex;
+gap:15px;
+font-size:21px
+}
+
+.container{
+max-width:600px;
+margin:auto;
+padding:18px
+}
+
+.banner{
+background:linear-gradient(135deg,#7048ee,#9d72ff);
+border-radius:20px;
+padding:24px;
+color:white;
+min-height:155px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+box-shadow:0 12px 30px #7652e544
+}
+
+.banner h1{
+font-size:25px;
+margin-bottom:8px
+}
+
+.banner p{
+opacity:.9;
+font-size:14px
+}
+
+.deposit{
+margin-top:18px;
+background:#fff;
+border-radius:18px;
+padding:18px;
+box-shadow:0 5px 20px #00000008
+}
+
+.deposit-top{
+display:flex;
+justify-content:space-between;
+align-items:center
+}
+
+.deposit h3{
+font-size:15px;
+color:#777
+}
+
+.balance{
+font-size:28px;
+font-weight:800;
+margin:8px 0
+}
+
+.btn{
+border:0;
+background:#6848e8;
+color:white;
+padding:10px 18px;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer
+}
+
+.quick{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin:20px 0
+}
+
+.quick div{
+background:white;
+border-radius:15px;
+padding:15px 5px;
+text-align:center;
+box-shadow:0 5px 18px #00000008;
+font-size:12px
+}
+
+.quick b{
+display:block;
+font-size:23px;
+margin-bottom:7px
+}
+
+.section-title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin:20px 0 12px
+}
+
+.section-title h2{
+font-size:18px
+}
+
+.section-title span{
+color:#6848e8;
+font-size:13px
+}
+
+.coin{
+background:#fff;
+border-radius:17px;
+padding:16px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:10px;
+box-shadow:0 5px 18px #00000008;
+cursor:pointer;
+transition:.15s
+}
+
+.coin:active{
+transform:scale(.98)
+}
+
+.coin-left{
+display:flex;
+align-items:center;
+gap:12px
+}
+
+.coin-icon{
+width:43px;
+height:43px;
+border-radius:50%;
+background:#f0edff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:21px;
+font-weight:bold;
+color:#6848e8
+}
+
+.coin-name b{
+display:block
+}
+
+.coin-name small{
+color:#999
+}
+
+.price{
+text-align:right
+}
+
+.price b{
+display:block
+}
+
+.green{
+color:#20a66a;
+font-size:12px
+}
+
+.red{
+color:#e54848;
+font-size:12px
+}
+
+.bottom{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:70px;
+background:white;
+border-top:1px solid #eee;
+display:flex;
+justify-content:space-around;
+align-items:center;
+z-index:10
+}
+
+.bottom div{
+text-align:center;
+font-size:11px;
+color:#999
+}
+
+.bottom b{
+display:block;
+font-size:21px;
+margin-bottom:4px
+}
+
+.bottom .active{
+color:#6848e8
+}
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:#00000066;
+z-index:100;
+align-items:center;
+justify-content:center;
+padding:20px
+}
+
+.modal-box{
+width:100%;
+max-width:420px;
+background:white;
+border-radius:22px;
+padding:22px;
+box-shadow:0 20px 50px #00000033
+}
+
+.modal-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px
+}
+
+.modal-header h2{
+font-size:21px
+}
+
+.close{
+background:#f1f1f5;
+border:0;
+width:35px;
+height:35px;
+border-radius:50%;
+font-size:20px;
+cursor:pointer
+}
+
+.network{
+background:#f5f2ff;
+border-radius:12px;
+padding:13px;
+margin-bottom:16px
+}
+
+.network small{
+display:block;
+color:#777;
+margin-bottom:5px
+}
+
+.network strong{
+color:#6848e8
+}
+
+.address{
+background:#f7f7f9;
+border:1px solid #eee;
+border-radius:12px;
+padding:13px;
+font-size:13px;
+word-break:break-all;
+margin-bottom:12px
+}
+
+.copy{
+width:100%;
+padding:12px;
+border:0;
+border-radius:10px;
+background:#6848e8;
+color:white;
+font-weight:bold;
+cursor:pointer
+}
+
+.demo-note{
+margin-top:15px;
+font-size:12px;
+color:#888;
+line-height:1.5;
+text-align:center
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">EliteHub</div>
+
+<div class="icons">
+<span>⌕</span>
+<span>♡</span>
+<span>♧</span>
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<section class="banner">
+
+<h1>Welcome to EliteHub</h1>
+
+<p>Your modern crypto trading experience</p>
+
+</section>
+
+
+<section class="deposit">
+
+<div class="deposit-top">
+
+<div>
+
+<h3>Total Balance</h3>
+
+<div class="balance">$0.00</div>
+
+</div>
+
+<button class="btn"
+onclick="openDeposit()">
+Deposit
+</button>
+
+</div>
+
+</section>
+
+
+<div class="quick">
+
+<div>
+<b>💰</b>
+Earn
+</div>
+
+<div>
+<b>🔄</b>
+Trade
+</div>
+
+<div>
+<b>🤝</b>
+P2P
+</div>
+
+<div>
+<b>🛡️</b>
+Security
+</div>
+
+</div>
+
+
+<div class="section-title">
+
+<h2>Popular Coins</h2>
+
+<span>View all</span>
+
+</div>
+
+
+<!-- BITCOIN -->
+
+<div class="coin"
+onclick="openChart('BTCUSDT','Bitcoin','BTC')">
+
+<div class="coin-left">
+
+<div class="coin-icon">
+₿
+</div>
+
+<div class="coin-name">
+
+<b>Bitcoin</b>
+
+<small>BTC</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<b id="BTCUSDT-price">
+Loading...
+</b>
+
+<span id="BTCUSDT-change">
+--
+</span>
+
+</div>
+
+</div>
+
+
+<!-- ETHEREUM -->
+
+<div class="coin"
+onclick="openChart('ETHUSDT','Ethereum','ETH')">
+
+<div class="coin-left">
+
+<div class="coin-icon">
+Ξ
+</div>
+
+<div class="coin-name">
+
+<b>Ethereum</b>
+
+<small>ETH</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<b id="ETHUSDT-price">
+Loading...
+</b>
+
+<span id="ETHUSDT-change">
+--
+</span>
+
+</div>
+
+</div>
+
+
+<!-- LITECOIN -->
+
+<div class="coin"
+onclick="openChart('LTCUSDT','Litecoin','LTC')">
+
+<div class="coin-left">
+
+<div class="coin-icon">
+Ł
+</div>
+
+<div class="coin-name">
+
+<b>Litecoin</b>
+
+<small>LTC</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<b id="LTCUSDT-price">
+Loading...
+</b>
+
+<span id="LTCUSDT-change">
+--
+</span>
+
+</div>
+
+</div>
+
+
+<div class="section-title">
+
+<h2>Market</h2>
+
+<span>View all</span>
+
+</div>
+
+
+<!-- POLKADOT -->
+
+<div class="coin"
+onclick="openChart('DOTUSDT','Polkadot','DOT')">
+
+<div class="coin-left">
+
+<div class="coin-icon">
+D
+</div>
+
+<div class="coin-name">
+
+<b>Polkadot</b>
+
+<small>DOT</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<b id="DOTUSDT-price">
+Loading...
+</b>
+
+<span id="DOTUSDT-change">
+--
+</span>
+
+</div>
+
+</div>
+
+
+</main>
+
+
+<nav class="bottom">
+
+<div class="active">
+
+<b>▣</b>
+
+Assets
+
+</div>
+
+<div>
+
+<b>◈</b>
+
+Contract
+
+</div>
+
+<div>
+
+<b>⇄</b>
+
+Trade
+
+</div>
+
+<div>
+
+<b>⌁</b>
+
+Market
+
+</div>
+
+<div>
+
+<b>⌂</b>
+
+Home
+
+</div>
+
+</nav>
+
+
+<!-- DEPOSIT MODAL -->
+
+<div class="modal"
+id="depositModal">
+
+<div class="modal-box">
+
+
+<div class="modal-header">
+
+<h2>Deposit</h2>
+
+<button class="close"
+onclick="closeDeposit()">
+×
+</button>
+
+</div>
+
+
+<div class="network">
+
+<small>Network</small>
+
+<strong>
+USDT — TRC20
+</strong>
+
+</div>
+
+
+<div class="address"
+id="walletAddress">
+
+TTq9DKbdFbK1rjD6XymsfQF25GPJ5w6vye
+
+</div>
+
+
+<button class="copy"
+onclick="copyAddress()">
+
+Copy Address
+
+</button>
+
+
+<div class="demo-note">
+
+This deposit interface is part of the EliteHub experimental platform.
+Deposits are not automatically credited at this stage.
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+
+/* =========================
+   DEPOSIT
+========================= */
+
+function openDeposit(){
+
+document.getElementById(
+"depositModal"
+).style.display="flex";
+
+}
+
+
+function closeDeposit(){
+
+document.getElementById(
+"depositModal"
+).style.display="none";
+
+}
+
+
+function copyAddress(){
+
+const address =
+document.getElementById(
+"walletAddress"
+).innerText;
+
+navigator.clipboard.writeText(address);
+
+alert("Address copied");
+
+}
+
+
+/* =========================
+   LIVE MARKET DATA
+========================= */
+
+const coins = [
+
+"BTCUSDT",
+
+"ETHUSDT",
+
+"LTCUSDT",
+
+"DOTUSDT"
+
+];
+
+
+async function loadPrices(){
+
+try{
+
+const response =
+await fetch(
+"https://api.binance.com/api/v3/ticker/24hr"
+);
+
+const data =
+await response.json();
+
+
+coins.forEach(symbol=>{
+
+const coin =
+data.find(
+item=>item.symbol===symbol
+);
+
+
+if(!coin) return;
+
+
+const price =
+parseFloat(
+coin.lastPrice
+);
+
+
+const change =
+parseFloat(
+coin.priceChangePercent
+);
+
+
+const priceElement =
+document.getElementById(
+symbol+"-price"
+);
+
+
+const changeElement =
+document.getElementById(
+symbol+"-change"
+);
+
+
+priceElement.innerText =
+"$"+
+price.toLocaleString(
+"en-US",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:8
+}
+);
+
+
+changeElement.innerText =
+(change>=0?"+":"")+
+change.toFixed(2)+"%";
+
+
+changeElement.className =
+change>=0
+? "green"
+: "red";
+
+});
+
+}catch(error){
+
+console.log(
+"Market data error:",
+error
+);
+
+}
+
+}
+
+
+/* =========================
+   OPEN COIN PAGE
+========================= */
+
+function openChart(
+symbol,
+name,
+code
+){
+
+window.location.href =
+"chart.html?symbol="+
+encodeURIComponent(symbol)+
+"&name="+
+encodeURIComponent(name)+
+"&code="+
+encodeURIComponent(code);
+
+}
+
+
+/* =========================
+   START LIVE PRICES
+========================= */
 
 loadPrices();
 
@@ -720,27 +1678,12 @@ loadPrices,
 5000
 );
 
+</script>
 
-/* ==============================
-   CHART PLACEHOLDER
-============================== */
-
-function openChart(
-symbol,
-name,
-code
-){
-
-alert(
-name+
-" ("+
-code+
-")\n\n"+
-"Live price is active.\n"+
-"Chart & indicators will be added next."
+</body>
+</html>
+5000
 );
-
-}
 
 </script>
 
