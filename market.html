@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EliteHub - Market</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#fff;
+color:#29292f;
+padding-bottom:78px;
+}
+
+/* TOP */
+
+.top{
+height:65px;
+display:flex;
+align-items:center;
+gap:25px;
+padding:0 28px;
+border-bottom:1px solid #f1f1f1;
+background:#fff;
+}
+
+.tab{
+font-size:22px;
+color:#999;
+font-weight:500;
+cursor:pointer;
+}
+
+.tab.active{
+color:#29292f;
+font-weight:700;
+}
+
+/* SEARCH */
+
+.search{
+margin-left:auto;
+font-size:29px;
+cursor:pointer;
+}
+
+/* MARKET HEADER */
+
+.market-header{
+display:grid;
+grid-template-columns:1.4fr 1fr 1fr;
+padding:25px 28px 14px;
+color:#999;
+font-size:14px;
+}
+
+.market-header div:nth-child(2),
+.market-header div:nth-child(3){
+text-align:right;
+}
+
+/* COINS */
+
+.coin-list{
+margin:0 28px;
+background:#fff;
+border-radius:18px;
+box-shadow:0 4px 20px rgba(0,0,0,.04);
+overflow:hidden;
+}
+
+.coin{
+display:grid;
+grid-template-columns:1.4fr 1fr 1fr;
+align-items:center;
+min-height:110px;
+padding:12px 28px;
+border-bottom:1px solid #f5f5f5;
+cursor:pointer;
+}
+
+.coin:last-child{
+border-bottom:0;
+}
+
+.coin:active{
+background:#fafafa;
+}
+
+.coin-left{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.coin-icon{
+width:46px;
+height:46px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:23px;
+font-weight:bold;
+color:white;
+flex-shrink:0;
+}
+
+.btc{
+background:#f5a623;
+}
+
+.eth{
+background:#627eea;
+}
+
+.dot{
+background:#e6007e;
+}
+
+.link{
+background:#3478d4;
+}
+
+.bch{
+background:#16b981;
+}
+
+.doge{
+background:#c4a63b;
+}
+
+.shib{
+background:#e74c3c;
+}
+
+.bnb{
+background:#f0b90b;
+}
+
+.xrp{
+background:#222;
+}
+
+.coin-name strong{
+display:block;
+font-size:18px;
+font-weight:600;
+}
+
+.coin-name small{
+display:block;
+margin-top:8px;
+color:#aaa;
+font-size:13px;
+}
+
+.price{
+text-align:right;
+}
+
+.price strong{
+display:block;
+font-size:17px;
+font-weight:500;
+}
+
+.price small{
+display:block;
+margin-top:7px;
+font-size:13px;
+color:#aaa;
+}
+
+.change{
+text-align:right;
+font-size:18px;
+font-weight:500;
+}
+
+.red{
+color:#e35b5b;
+}
+
+.green{
+color:#16a678;
+}
+
+.loading{
+color:#aaa;
+}
+
+/* BOTTOM */
+
+.bottom{
+position:fixed;
+left:0;
+right:0;
+bottom:0;
+height:70px;
+background:#fff;
+border-top:1px solid #eee;
+display:flex;
+justify-content:space-around;
+align-items:center;
+z-index:100;
+}
+
+.bottom div{
+width:20%;
+text-align:center;
+font-size:11px;
+color:#999;
+cursor:pointer;
+}
+
+.bottom b{
+display:block;
+font-size:22px;
+margin-bottom:4px;
+}
+
+.bottom .active{
+color:#7654bd;
+}
+
+/* TOAST */
+
+.toast{
+position:fixed;
+left:50%;
+bottom:90px;
+transform:translateX(-50%);
+background:#29292f;
+color:#fff;
+padding:11px 18px;
+border-radius:9px;
+font-size:13px;
+display:none;
+z-index:500;
+white-space:nowrap;
+}
+
+/* MOBILE */
+
+@media(max-width:430px){
+
+.top{
+padding:0 28px;
+gap:25px;
+}
+
+.market-header{
+padding-left:28px;
+padding-right:28px;
+}
+
+.coin-list{
+margin-left:28px;
+margin-right:28px;
+}
+
+.coin{
+padding-left:28px;
+padding-right:28px;
+}
+
+.coin-icon{
+width:44px;
+height:44px;
+}
+
+.coin-name strong{
+font-size:17px;
+}
+
+.price strong{
+font-size:16px;
+}
+
+.change{
+font-size:17px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- TOP -->
+
+<div class="top">
+
+<div class="tab active">
+Spot
+</div>
+
+<div
+class="tab"
+onclick="showToast('Futures market is simulated')"
+>
+Futures
+</div>
+
+<div
+class="tab"
+onclick="showToast('Favorites are simulated')"
+>
+Favorites
+</div>
+
+<div
+class="search"
+onclick="showToast('Search will be added')"
+>
+⌕
+</div>
+
+</div>
+
+
+<!-- HEADER -->
+
+<div class="market-header">
+
+<div>
+Token/Vol
+</div>
+
+<div>
+Last Price ↕
+</div>
+
+<div>
+24h Change ↕
+</div>
+
+</div>
+
+
+<!-- COINS -->
+
+<div class="coin-list">
+
+
+<!-- BTC -->
+
+<div
+class="coin"
+onclick="openTrade('BTCUSDT')"
+>
+
+<div class="coin-left">
+
+<div class="coin-icon btc">
+₿
+</div>
+
+<div class="coin-name">
+
+<strong>
+BTC
+</strong>
+
+<small id="BTCUSDT-volume">
+24H Vol Loading...
+</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<strong id="BTCUSDT-price">
+Loading...
+</strong>
+
+<small id="BTCUSDT-sub">
+$--
+</small>
+
+</div>
+
+<div
+class="change loading"
+id="BTCUSDT-change"
+>
+--
+</div>
+
+</div>
+
+
+<!-- ETH -->
+
+<div
+class="coin"
+onclick="openTrade('ETHUSDT')"
+>
+
+<div class="coin-left">
+
+<div class="coin-icon eth">
+Ξ
+</div>
+
+<div class="coin-name">
+
+<strong>
+ETH
+</strong>
+
+<small id="ETHUSDT-volume">
+24H Vol Loading...
+</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<strong id="ETHUSDT-price">
+Loading...
+</strong>
+
+<small id="ETHUSDT-sub">
+$--
+</small>
+
+</div>
+
+<div
+class="change loading"
+id="ETHUSDT-change"
+>
+--
+</div>
+
+</div>
+
+
+<!-- DOT -->
+
+<div
+class="coin"
+onclick="openTrade('DOTUSDT')"
+>
+
+<div class="coin-left">
+
+<div class="coin-icon dot">
+●
+</div>
+
+<div class="coin-name">
+
+<strong>
+DOT
+</strong>
+
+<small id="DOTUSDT-volume">
+24H Vol Loading...
+</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<strong id="DOTUSDT-price">
+Loading...
+</strong>
+
+<small id="DOTUSDT-sub">
+$--
+</small>
+
+</div>
+
+<div
+class="change loading"
+id="DOTUSDT-change"
+>
+--
+</div>
+
+</div>
+
+
+<!-- LINK -->
+
+<div
+class="coin"
+onclick="openTrade('LINKUSDT')"
+>
+
+<div class="coin-left">
+
+<div class="coin-icon link">
+⬡
+</div>
+
+<div class="coin-name">
+
+<strong>
+LINK
+</strong>
+
+<small id="LINKUSDT-volume">
+24H Vol Loading...
+</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<strong id="LINKUSDT-price">
+Loading...
+</strong>
+
+<small id="LINKUSDT-sub">
+$--
+</small>
+
+</div>
+
+<div
+class="change loading"
+id="LINKUSDT-change"
+>
+--
+</div>
+
+</div>
+
+
+<!-- BCH -->
+
+<div
+class="coin"
+onclick="openTrade('BCHUSDT')"
+>
+
+<div class="coin-left">
+
+<div class="coin-icon bch">
+₿
+</div>
+
+<div class="coin-name">
+
+<strong>
+BCH
+</strong>
+
+<small id="BCHUSDT-volume">
+24H Vol Loading...
+</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<strong id="BCHUSDT-price">
+Loading...
+</strong>
+
+<small id="BCHUSDT-sub">
+$--
+</small>
+
+</div>
+
+<div
+class="change loading"
+id="BCHUSDT-change"
+>
+--
+</div>
+
+</div>
+
+
+<!-- DOGE -->
+
+<div
+class="coin"
+onclick="openTrade('DOGEUSDT')"
+>
+
+<div class="coin-left">
+
+<div class="coin-icon doge">
+Ð
+</div>
+
+<div class="coin-name">
+
+<strong>
+DOGE
+</strong>
+
+<small id="DOGEUSDT-volume">
+24H Vol Loading...
+</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<strong id="DOGEUSDT-price">
+Loading...
+</strong>
+
+<small id="DOGEUSDT-sub">
+$--
+</small>
+
+</div>
+
+<div
+class="change loading"
+id="DOGEUSDT-change"
+>
+--
+</div>
+
+</div>
+
+
+<!-- SHIB -->
+
+<div
+class="coin"
+onclick="openTrade('SHIBUSDT')"
+>
+
+<div class="coin-left">
+
+<div class="coin-icon shib">
+🐕
+</div>
+
+<div class="coin-name">
+
+<strong>
+SHIB
+</strong>
+
+<small id="SHIBUSDT-volume">
+24H Vol Loading...
+</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<strong id="SHIBUSDT-price">
+Loading...
+</strong>
+
+<small id="SHIBUSDT-sub">
+$--
+</small>
+
+</div>
+
+<div
+class="change loading"
+id="SHIBUSDT-change"
+>
+--
+</div>
+
+</div>
+
+
+<!-- BNB -->
+
+<div
+class="coin"
+onclick="openTrade('BNBUSDT')"
+>
+
+<div class="coin-left">
+
+<div class="coin-icon bnb">
+◆
+</div>
+
+<div class="coin-name">
+
+<strong>
+BNB
+</strong>
+
+<small id="BNBUSDT-volume">
+24H Vol Loading...
+</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<strong id="BNBUSDT-price">
+Loading...
+</strong>
+
+<small id="BNBUSDT-sub">
+$--
+</small>
+
+</div>
+
+<div
+class="change loading"
+id="BNBUSDT-change"
+>
+--
+</div>
+
+</div>
+
+
+<!-- XRP -->
+
+<div
+class="coin"
+onclick="openTrade('XRPUSDT')"
+>
+
+<div class="coin-left">
+
+<div class="coin-icon xrp">
+X
+</div>
+
+<div class="coin-name">
+
+<strong>
+XRP
+</strong>
+
+<small id="XRPUSDT-volume">
+24H Vol Loading...
+</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<strong id="XRPUSDT-price">
+Loading...
+</strong>
+
+<small id="XRPUSDT-sub">
+$--
+</small>
+
+</div>
+
+<div
+class="change loading"
+id="XRPUSDT-change"
+>
+--
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- BOTTOM NAV -->
+
+<div class="bottom">
+
+
+<div onclick="location.href='index.html'">
+
+<b>⌂</b>
+
+Home
+
+</div>
+
+
+<div class="active">
+
+<b>⌁</b>
+
+Market
+
+</div>
+
+
+<div onclick="location.href='trade.html'">
+
+<b>⇄</b>
+
+Trade
+
+</div>
+
+
+<div onclick="showToast('Futures is simulated')">
+
+<b>◇</b>
+
+Futures
+
+</div>
+
+
+<div onclick="location.href='me.html'">
+
+<b>♙</b>
+
+Assets
+
+</div>
+
+
+</div>
+
+
+<div
+class="toast"
+id="toast"
+></div>
+
+
+<script>
+
+const symbols=[
+
+"BTCUSDT",
+"ETHUSDT",
+"DOTUSDT",
+"LINKUSDT",
+"BCHUSDT",
+"DOGEUSDT",
+"SHIBUSDT",
+"BNBUSDT",
+"XRPUSDT"
+
+];
+
+
+function formatPrice(price){
+
+if(price>=1000){
+
+return price.toLocaleString(
+"en-US",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+}
+);
+
+}
+
+if(price>=1){
+
+return price.toLocaleString(
+"en-US",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:4
+}
+);
+
+}
+
+return price.toLocaleString(
+"en-US",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:8
+}
+);
+
+}
+
+
+function formatVolume(value){
+
+const n=Number(value);
+
+if(n>=1000000000){
+
+return "$"+
+(n/1000000000).toFixed(2)+
+"B";
+
+}
+
+if(n>=1000000){
+
+return "$"+
+(n/1000000).toFixed(2)+
+"M";
+
+}
+
+if(n>=1000){
+
+return "$"+
+(n/1000).toFixed(2)+
+"K";
+
+}
+
+return "$"+n.toFixed(2);
+
+}
+
+
+async function loadMarket(){
+
+try{
+
+const response=
+await fetch(
+"https://api.binance.com/api/v3/ticker/24hr"
+);
+
+const data=
+await response.json();
+
+
+symbols.forEach(function(symbol){
+
+const item=
+data.find(
+x=>x.symbol===symbol
+);
+
+if(!item){
+return;
+}
+
+
+const price=
+Number(item.lastPrice);
+
+const change=
+Number(item.priceChangePercent);
+
+const quoteVolume=
+Number(item.quoteVolume);
+
+
+document.getElementById(
+symbol+"-price"
+).textContent=
+formatPrice(price);
+
+
+document.getElementById(
+symbol+"-sub"
+).textContent=
+"$"+formatPrice(price);
+
+
+document.getElementById(
+symbol+"-volume"
+).textContent=
+"24H Vol "+
+formatVolume(quoteVolume);
+
+
+const changeElement=
+document.getElementById(
+symbol+"-change"
+);
+
+changeElement.textContent=
+(change>=0?"+":"")+
+change.toFixed(2)+"%";
+
+
+changeElement.className=
+"change "+
+(change>=0?"green":"red");
+
+});
+
+}catch(error){
+
+console.log(
+"Market error:",
+error
+);
+
+}
+
+}
+
+
+function openTrade(symbol){
+
+location.href=
+"trade.html?symbol="+
+encodeURIComponent(symbol);
+
+}
+
+
+function showToast(message){
+
+const toast=
+document.getElementById("toast");
+
+toast.textContent=
+message;
+
+toast.style.display="block";
+
+setTimeout(function(){
+
+toast.style.display="none";
+
+},1800);
+
+}
+
+
+loadMarket();
+
+setInterval(
+loadMarket,
+5000
+);
+
+</script>
+
+</body>
+
+</html>
