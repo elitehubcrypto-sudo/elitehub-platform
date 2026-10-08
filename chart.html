@@ -1,1317 +1,707 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>EliteHub Chart</title>
 
 <style>
-
 *{
-box-sizing:border-box;
+  box-sizing:border-box;
 }
 
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f7f7fb;
-color:#181827;
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f7f7fb;
+  color:#15151d;
 }
 
 .header{
-height:64px;
-background:#fff;
-display:flex;
-align-items:center;
-padding:0 16px;
-border-bottom:1px solid #e5e5e5;
+  height:55px;
+  background:white;
+  border-bottom:1px solid #ddd;
+  display:flex;
+  align-items:center;
+  padding:0 20px;
+  gap:15px;
 }
 
 .back{
-font-size:32px;
-margin-right:14px;
-cursor:pointer;
+  font-size:30px;
+  cursor:pointer;
 }
 
-.title{
-font-size:20px;
-font-weight:700;
+.coinName{
+  font-size:20px;
+  font-weight:500;
 }
 
-.symbol{
-font-size:13px;
-color:#777;
-margin-top:3px;
-}
-
-.price-box{
-background:#fff;
-padding:15px 16px;
-border-bottom:1px solid #e5e5e5;
+.priceBox{
+  background:white;
+  padding:25px 25px 20px;
+  border-bottom:1px solid #ddd;
 }
 
 .price{
-font-size:27px;
-font-weight:700;
+  font-size:42px;
+  font-weight:bold;
 }
 
 .change{
-font-size:14px;
-font-weight:600;
-margin-top:5px;
+  font-size:20px;
+  font-weight:bold;
+  margin-top:8px;
 }
 
-.green{
-color:#16a34a;
+.up{
+  color:#168a3b;
 }
 
-.red{
-color:#dc2626;
+.down{
+  color:#c52d38;
 }
 
 .timeframes{
-display:flex;
-gap:8px;
-padding:12px;
-background:#fff;
-border-bottom:1px solid #e5e5e5;
-overflow-x:auto;
+  display:flex;
+  gap:12px;
+  padding:22px 20px;
+  background:white;
+  border-bottom:1px solid #ddd;
+  overflow-x:auto;
 }
 
 .timeframes button{
-border:0;
-background:#f0f0f4;
-padding:9px 15px;
-border-radius:8px;
-font-size:14px;
-font-weight:600;
-white-space:nowrap;
+  border:0;
+  background:#eeeef3;
+  padding:15px 25px;
+  border-radius:14px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+  white-space:nowrap;
 }
 
 .timeframes button.active{
-background:#7048ee;
-color:#fff;
+  background:#7143df;
+  color:white;
 }
 
-.chart-box{
-margin:12px;
-background:#fff;
-border-radius:14px;
-overflow:hidden;
-box-shadow:0 2px 10px rgba(0,0,0,.05);
+.chartBox{
+  margin:20px;
+  background:white;
+  border-radius:22px;
+  padding:10px;
+  box-shadow:0 3px 15px rgba(0,0,0,.06);
 }
 
-#chart{
-display:block;
-width:100%;
-height:440px;
+canvas{
+  width:100%;
+  height:500px;
+  display:block;
 }
 
-.loading{
-text-align:center;
-padding:20px;
-color:#777;
-font-size:14px;
+.rsiBox{
+  margin:20px;
+  padding:25px;
+  background:white;
+  border-radius:22px;
+  box-shadow:0 3px 15px rgba(0,0,0,.06);
 }
 
-.rsi-box{
-margin:12px;
-padding:15px;
-background:#fff;
-border-radius:14px;
-box-shadow:0 2px 10px rgba(0,0,0,.05);
+.rsiTitle{
+  font-size:18px;
+  color:#777;
 }
 
-.rsi-title{
-font-size:13px;
-color:#777;
+.rsiValue{
+  font-size:34px;
+  font-weight:bold;
+  margin-top:10px;
 }
 
-.rsi{
-font-size:22px;
-font-weight:700;
-margin-top:5px;
+.rsiStatus{
+  color:#777;
+  font-size:20px;
+  margin-top:5px;
 }
-
-.status{
-font-size:13px;
-color:#777;
-margin-top:4px;
-}
-
 </style>
-
 </head>
-
 
 <body>
 
-
 <div class="header">
-
-<div
-class="back"
-onclick="history.back()"
->
-‹
+  <div class="back" onclick="history.back()">‹</div>
+  <div class="coinName" id="coinName">BTC</div>
 </div>
 
-<div>
-
-<div
-class="title"
-id="coinName"
->
-Bitcoin
+<div class="priceBox">
+  <div class="price" id="price">Loading...</div>
+  <div class="change" id="change">Loading...</div>
 </div>
-
-<div
-class="symbol"
-id="coinSymbol"
->
-BTC
-</div>
-
-</div>
-
-</div>
-
-
-<div class="price-box">
-
-<div
-class="price"
-id="price"
->
-Loading...
-</div>
-
-<div
-class="change"
-id="change"
->
---
-</div>
-
-</div>
-
 
 <div class="timeframes">
-
-<button
-onclick="changeTimeframe('1m',this)"
->
-1m
-</button>
-
-<button
-onclick="changeTimeframe('5m',this)"
->
-5m
-</button>
-
-<button
-class="active"
-onclick="changeTimeframe('15m',this)"
->
-15m
-</button>
-
-<button
-onclick="changeTimeframe('1h',this)"
->
-1H
-</button>
-
-<button
-onclick="changeTimeframe('4h',this)"
->
-4H
-</button>
-
-<button
-onclick="changeTimeframe('1d',this)"
->
-1D
-</button>
-
+  <button class="active" onclick="changeTimeframe('1m',this)">1m</button>
+  <button onclick="changeTimeframe('5m',this)">5m</button>
+  <button onclick="changeTimeframe('15m',this)">15m</button>
+  <button onclick="changeTimeframe('1h',this)">1H</button>
+  <button onclick="changeTimeframe('4h',this)">4H</button>
+  <button onclick="changeTimeframe('1d',this)">1D</button>
 </div>
 
-
-<div class="chart-box">
-
-<canvas id="chart"></canvas>
-
-<div
-class="loading"
-id="loading"
->
-Loading chart...
+<div class="chartBox">
+  <canvas id="chart"></canvas>
 </div>
 
+<div class="rsiBox">
+  <div class="rsiTitle">RSI 14</div>
+  <div class="rsiValue" id="rsi">--</div>
+  <div class="rsiStatus" id="rsiStatus">Loading...</div>
 </div>
-
-
-<div class="rsi-box">
-
-<div class="rsi-title">
-RSI 14
-</div>
-
-<div
-class="rsi"
-id="rsi"
->
---
-</div>
-
-<div
-class="status"
-id="rsiStatus"
->
-Loading...
-</div>
-
-</div>
-
 
 <script>
 
+const params = new URLSearchParams(window.location.search);
 
-/* =========================
-COIN INFORMATION
-========================= */
+const symbol =
+  params.get("symbol") || "BTCUSDT";
 
-const params =
-new URLSearchParams(
-window.location.search
-);
+const name =
+  params.get("name") || "Bitcoin";
 
+const code =
+  params.get("code") || "BTC";
 
-let symbol =
-params.get("symbol") ||
-"BTCUSDT";
-
-
-let name =
-params.get("name") ||
-"Bitcoin";
-
-
-let code =
-params.get("code") ||
-"BTC";
-
-
-document.getElementById(
-"coinName"
-).innerText = name;
-
-
-document.getElementById(
-"coinSymbol"
-).innerText = code;
-
-
-/* =========================
-SETTINGS
-========================= */
-
-let timeframe = "15m";
-
+let timeframe = "1m";
 let candles = [];
 
-
-/* =========================
-CANVAS
-========================= */
-
-const canvas =
-document.getElementById("chart");
-
-const ctx =
-canvas.getContext("2d");
-
-
-function resizeCanvas(){
-
-const rect =
-canvas.getBoundingClientRect();
-
-const ratio =
-window.devicePixelRatio || 1;
-
-canvas.width =
-rect.width * ratio;
-
-canvas.height =
-rect.height * ratio;
-
-ctx.setTransform(
-ratio,
-0,
-0,
-ratio,
-0,
-0
-);
-
-drawChart();
-
-}
-
-
-window.addEventListener(
-"resize",
-resizeCanvas
-);
+document.getElementById("coinName").textContent = code;
 
 
 /* =========================
-BINANCE DATA
-========================= */
-
-async function loadChart(){
-
-document.getElementById(
-"loading"
-).innerText =
-"Loading chart...";
-
-
-try{
-
-const url =
-"https://api.binance.com/api/v3/klines?symbol="
-+
-encodeURIComponent(symbol)
-+
-"&interval="
-+
-encodeURIComponent(timeframe)
-+
-"&limit=300";
-
-
-const response =
-await fetch(url);
-
-
-if(!response.ok){
-
-throw new Error(
-"Binance API error"
-);
-
-}
-
-
-const data =
-await response.json();
-
-
-if(!Array.isArray(data) ||
-data.length === 0){
-
-throw new Error(
-"No market data"
-);
-
-}
-
-
-candles =
-data.map(function(item){
-
-return {
-
-time:Number(item[0]),
-
-open:Number(item[1]),
-
-high:Number(item[2]),
-
-low:Number(item[3]),
-
-close:Number(item[4])
-
-};
-
-});
-
-
-document.getElementById(
-"loading"
-).style.display =
-"none";
-
-
-drawChart();
-
-calculateRSI();
-
-
-}catch(error){
-
-console.log(error);
-
-
-document.getElementById(
-"loading"
-).style.display =
-"block";
-
-
-document.getElementById(
-"loading"
-).innerText =
-"Unable to load market data";
-
-}
-
-}
-
-
-/* =========================
-PRICE
+   PRICE
 ========================= */
 
 async function loadPrice(){
 
-try{
+  try{
 
-const response =
-await fetch(
-"https://api.binance.com/api/v3/ticker/24hr?symbol="
-+
-encodeURIComponent(symbol)
-);
+    const url =
+      "https://api.binance.com/api/v3/ticker/24hr?symbol="
+      + encodeURIComponent(symbol);
 
+    const response = await fetch(url,{cache:"no-store"});
 
-if(!response.ok){
+    const data = await response.json();
 
-throw new Error(
-"Price error"
-);
+    const price = Number(data.lastPrice);
+    const percent = Number(data.priceChangePercent);
 
-}
+    if(!Number.isFinite(price)){
+      throw new Error("Invalid price");
+    }
 
+    document.getElementById("price").textContent =
+      "$" + price.toLocaleString("en-US",{
+        minimumFractionDigits:2,
+        maximumFractionDigits:8
+      });
 
-const data =
-await response.json();
+    const changeElement =
+      document.getElementById("change");
 
+    changeElement.textContent =
+      (percent >= 0 ? "+" : "") +
+      percent.toFixed(2) + "%";
 
-const price =
-Number(data.lastPrice);
+    changeElement.className =
+      "change " + (percent >= 0 ? "up" : "down");
 
+  }catch(error){
 
-const change =
-Number(data.priceChangePercent);
+    console.log(error);
 
-
-let formatted;
-
-
-if(price >= 1000){
-
-formatted =
-price.toLocaleString(
-"en-US",
-{
-minimumFractionDigits:2,
-maximumFractionDigits:2
-}
-);
-
-}else if(price >= 1){
-
-formatted =
-price.toLocaleString(
-"en-US",
-{
-minimumFractionDigits:2,
-maximumFractionDigits:6
-}
-);
-
-}else{
-
-formatted =
-price.toLocaleString(
-"en-US",
-{
-minimumFractionDigits:4,
-maximumFractionDigits:8
-}
-);
-
-}
-
-
-document.getElementById(
-"price"
-).innerText =
-"$" + formatted;
-
-
-const changeElement =
-document.getElementById(
-"change"
-);
-
-
-changeElement.innerText =
-(change >= 0 ? "+" : "")
-+
-change.toFixed(2)
-+
-"%";
-
-
-changeElement.className =
-"change " +
-(
-change >= 0
-? "green"
-: "red"
-);
-
-
-}catch(error){
-
-console.log(error);
-
-}
+  }
 
 }
 
 
 /* =========================
-EMA
+   LOAD CANDLES
 ========================= */
 
-function calculateEMA(
-data,
-period
-){
+async function loadChart(){
 
-if(data.length < period){
+  try{
 
-return [];
+    const url =
+      "https://api.binance.com/api/v3/klines" +
+      "?symbol=" + encodeURIComponent(symbol) +
+      "&interval=" + encodeURIComponent(timeframe) +
+      "&limit=150";
 
-}
+    const response = await fetch(url,{cache:"no-store"});
 
+    const data = await response.json();
 
-let ema = 0;
+    if(!Array.isArray(data)){
+      throw new Error("Invalid candle data");
+    }
 
-for(
-let i=0;
-i<period;
-i++
-){
+    candles = data.map(function(item){
 
-ema += data[i].close;
+      return {
+        time:Number(item[0]),
+        open:Number(item[1]),
+        high:Number(item[2]),
+        low:Number(item[3]),
+        close:Number(item[4])
+      };
 
-}
+    }).filter(function(c){
 
-ema /= period;
+      return Number.isFinite(c.time) &&
+             Number.isFinite(c.open) &&
+             Number.isFinite(c.high) &&
+             Number.isFinite(c.low) &&
+             Number.isFinite(c.close);
 
+    });
 
-const result = [];
+    if(candles.length < 2){
+      throw new Error("Not enough candles");
+    }
 
-const multiplier =
-2 / (period + 1);
+    drawChart();
+    updateRSI();
 
+  }catch(error){
 
-result.push({
+    console.log("Chart error:",error);
 
-index:period - 1,
-
-value:ema
-
-});
-
-
-for(
-let i=period;
-i<data.length;
-i++
-){
-
-ema =
-(
-(data[i].close - ema)
-*
-multiplier
-)
-+
-ema;
-
-
-result.push({
-
-index:i,
-
-value:ema
-
-});
-
-}
-
-
-return result;
+  }
 
 }
 
 
 /* =========================
-RSI
+   EMA
 ========================= */
 
-function calculateRSI(){
+function calculateEMA(values,period){
 
-if(candles.length < 15){
+  if(values.length === 0) return [];
 
-return;
+  const result = [];
 
-}
+  const multiplier =
+    2 / (period + 1);
 
+  let ema = values[0];
 
-let gain = 0;
+  result.push(ema);
 
-let loss = 0;
+  for(let i=1;i<values.length;i++){
 
+    ema =
+      (values[i] - ema) * multiplier + ema;
 
-for(
-let i=1;
-i<=14;
-i++
-){
+    result.push(ema);
 
-const diff =
-candles[i].close -
-candles[i-1].close;
+  }
 
-
-if(diff >= 0){
-
-gain += diff;
-
-}else{
-
-loss += Math.abs(diff);
-
-}
-
-}
-
-
-let avgGain =
-gain / 14;
-
-let avgLoss =
-loss / 14;
-
-
-for(
-let i=15;
-i<candles.length;
-i++
-){
-
-const diff =
-candles[i].close -
-candles[i-1].close;
-
-
-const currentGain =
-diff > 0
-? diff
-: 0;
-
-
-const currentLoss =
-diff < 0
-? Math.abs(diff)
-: 0;
-
-
-avgGain =
-(
-avgGain * 13 +
-currentGain
-) / 14;
-
-
-avgLoss =
-(
-avgLoss * 13 +
-currentLoss
-) / 14;
-
-}
-
-
-let rsi;
-
-
-if(avgLoss === 0){
-
-rsi = 100;
-
-}else{
-
-const rs =
-avgGain / avgLoss;
-
-
-rsi =
-100 -
-(
-100 /
-(1 + rs)
-);
-
-}
-
-
-document.getElementById(
-"rsi"
-).innerText =
-rsi.toFixed(2);
-
-
-let status;
-
-
-if(rsi >= 70){
-
-status =
-"Overbought";
-
-}else if(rsi <= 30){
-
-status =
-"Oversold";
-
-}else{
-
-status =
-"Neutral";
-
-}
-
-
-document.getElementById(
-"rsiStatus"
-).innerText =
-status;
-
+  return result;
 }
 
 
 /* =========================
-DRAW CHART
+   RSI
+========================= */
+
+function calculateRSI(values,period){
+
+  if(values.length <= period){
+    return null;
+  }
+
+  let gains = 0;
+  let losses = 0;
+
+  for(let i=1;i<=period;i++){
+
+    const difference =
+      values[i] - values[i-1];
+
+    if(difference >= 0){
+      gains += difference;
+    }else{
+      losses += Math.abs(difference);
+    }
+
+  }
+
+  let averageGain =
+    gains / period;
+
+  let averageLoss =
+    losses / period;
+
+  for(let i=period+1;i<values.length;i++){
+
+    const difference =
+      values[i] - values[i-1];
+
+    const gain =
+      difference > 0 ? difference : 0;
+
+    const loss =
+      difference < 0 ? Math.abs(difference) : 0;
+
+    averageGain =
+      ((averageGain * (period - 1)) + gain) / period;
+
+    averageLoss =
+      ((averageLoss * (period - 1)) + loss) / period;
+
+  }
+
+  if(averageLoss === 0){
+    return 100;
+  }
+
+  const rs =
+    averageGain / averageLoss;
+
+  const rsi =
+    100 - (100 / (1 + rs));
+
+  return Number.isFinite(rsi) ? rsi : null;
+}
+
+
+/* =========================
+   DRAW CHART
 ========================= */
 
 function drawChart(){
 
-if(candles.length === 0){
+  const canvas =
+    document.getElementById("chart");
 
-return;
+  const rect =
+    canvas.getBoundingClientRect();
 
-}
+  const dpr =
+    window.devicePixelRatio || 1;
 
+  canvas.width =
+    rect.width * dpr;
 
-const width =
-canvas.clientWidth;
+  canvas.height =
+    rect.height * dpr;
 
-const height =
-canvas.clientHeight;
+  const ctx =
+    canvas.getContext("2d");
 
+  ctx.scale(dpr,dpr);
 
-ctx.clearRect(
-0,
-0,
-width,
-height
-);
+  const width = rect.width;
+  const height = rect.height;
 
+  ctx.clearRect(0,0,width,height);
 
-/* Background */
+  if(!candles.length) return;
 
-ctx.fillStyle =
-"#ffffff";
 
-ctx.fillRect(
-0,
-0,
-width,
-height
-);
+  /* PRICE RANGE */
 
+  let minPrice = Infinity;
+  let maxPrice = -Infinity;
 
-/* Chart margins */
+  candles.forEach(function(c){
 
-const left = 10;
+    if(c.low < minPrice)
+      minPrice = c.low;
 
-const right = 65;
+    if(c.high > maxPrice)
+      maxPrice = c.high;
 
-const top = 20;
+  });
 
-const bottom = 35;
+  if(!Number.isFinite(minPrice) ||
+     !Number.isFinite(maxPrice)){
+    return;
+  }
 
+  const range =
+    maxPrice - minPrice;
 
-const chartWidth =
-width - left - right;
+  const padding =
+    range * 0.08 || maxPrice * 0.01;
 
-const chartHeight =
-height - top - bottom;
+  minPrice -= padding;
+  maxPrice += padding;
 
 
-/* Visible candles */
+  /* GRID */
 
-const visible =
-candles.slice(-80);
+  ctx.strokeStyle = "#eeeeee";
+  ctx.lineWidth = 1;
 
+  const gridCount = 6;
 
-let highest =
--Math.infinity;
+  for(let i=0;i<gridCount;i++){
 
-let lowest =
-Math.infinity;
+    const y =
+      20 +
+      (height - 40) *
+      (i / (gridCount - 1));
 
+    ctx.beginPath();
+    ctx.moveTo(10,y);
+    ctx.lineTo(width - 65,y);
+    ctx.stroke();
 
-visible.forEach(function(c){
+    const value =
+      maxPrice -
+      (maxPrice - minPrice) *
+      (i / (gridCount - 1));
 
-if(c.high > highest){
+    ctx.fillStyle = "#777";
+    ctx.font = "13px Arial";
+    ctx.fillText(
+      formatPrice(value),
+      width - 60,
+      y + 4
+    );
 
-highest = c.high;
+  }
 
-}
 
-if(c.low < lowest){
+  /* CANDLE SIZE */
 
-lowest = c.low;
+  const chartWidth =
+    width - 75;
 
-}
+  const candleWidth =
+    Math.max(
+      3,
+      chartWidth / candles.length * 0.65
+    );
 
-});
+  const gap =
+    chartWidth / candles.length;
 
 
-const padding =
-(highest - lowest) * 0.08;
+  function priceY(price){
 
+    return 20 +
+      (maxPrice - price) /
+      (maxPrice - minPrice) *
+      (height - 40);
 
-highest += padding;
+  }
 
-lowest -= padding;
 
+  /* CANDLES */
 
-const priceRange =
-highest - lowest;
+  candles.forEach(function(c,i){
 
+    const x =
+      10 + i * gap + gap / 2;
 
-function y(price){
+    const openY =
+      priceY(c.open);
 
-return top +
-(
-(highest - price)
-/
-priceRange
-)
-*
-chartHeight;
+    const closeY =
+      priceY(c.close);
 
-}
+    const highY =
+      priceY(c.high);
 
+    const lowY =
+      priceY(c.low);
 
-/* Grid */
+    const rising =
+      c.close >= c.open;
 
-ctx.strokeStyle =
-"#eeeeee";
+    ctx.strokeStyle =
+      rising ? "#168a3b" : "#d02f3c";
 
-ctx.lineWidth = 1;
+    ctx.fillStyle =
+      rising ? "#168a3b" : "#d02f3c";
 
+    /* wick */
 
-for(
-let i=0;
-i<=5;
-i++
-){
+    ctx.beginPath();
 
-const gy =
-top +
-(
-chartHeight / 5
-)
-*
-i;
+    ctx.moveTo(x,highY);
+    ctx.lineTo(x,lowY);
 
+    ctx.stroke();
 
-ctx.beginPath();
 
-ctx.moveTo(
-left,
-gy
-);
+    /* body */
 
-ctx.lineTo(
-width-right,
-gy
-);
+    const bodyTop =
+      Math.min(openY,closeY);
 
-ctx.stroke();
+    const bodyHeight =
+      Math.max(
+        1,
+        Math.abs(openY-closeY)
+      );
 
+    ctx.fillRect(
+      x - candleWidth / 2,
+      bodyTop,
+      candleWidth,
+      bodyHeight
+    );
 
-const value =
-highest -
-(
-priceRange / 5
-)
-*
-i;
+  });
 
 
-ctx.fillStyle =
-"#777";
+  /* EMA */
 
-ctx.font =
-"11px Arial";
+  const closes =
+    candles.map(c => c.close);
 
-ctx.fillText(
-formatChartPrice(value),
-width-right+5,
-gy+4
-);
+  const ema =
+    calculateEMA(closes,20);
 
-}
+  ctx.strokeStyle = "#7143df";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
 
+  ema.forEach(function(value,i){
 
-/* Candles */
+    if(!Number.isFinite(value)) return;
 
-const candleWidth =
-chartWidth /
-visible.length;
+    const x =
+      10 + i * gap + gap / 2;
 
+    const y =
+      priceY(value);
 
-visible.forEach(
-function(c,index){
+    if(i === 0){
+      ctx.moveTo(x,y);
+    }else{
+      ctx.lineTo(x,y);
+    }
 
-const x =
-left +
-index *
-candleWidth +
-candleWidth / 2;
+  });
 
-
-const openY =
-y(c.open);
-
-const closeY =
-y(c.close);
-
-const highY =
-y(c.high);
-
-const lowY =
-y(c.low);
-
-
-const bullish =
-c.close >= c.open;
-
-
-ctx.strokeStyle =
-bullish
-? "#16a34a"
-: "#dc2626";
-
-
-ctx.fillStyle =
-bullish
-? "#16a34a"
-: "#dc2626";
-
-
-/* Wick */
-
-ctx.beginPath();
-
-ctx.moveTo(
-x,
-highY
-);
-
-ctx.lineTo(
-x,
-lowY
-);
-
-ctx.stroke();
-
-
-/* Body */
-
-const bodyTop =
-Math.min(
-openY,
-closeY
-);
-
-
-const bodyHeight =
-Math.max(
-1,
-Math.abs(
-closeY-openY
-)
-);
-
-
-ctx.fillRect(
-x-candleWidth*0.32,
-bodyTop,
-candleWidth*0.64,
-bodyHeight
-);
-
-});
-
-
-/* EMA */
-
-const emaData =
-calculateEMA(
-candles,
-20
-);
-
-
-ctx.strokeStyle =
-"#7048ee";
-
-ctx.lineWidth = 2;
-
-ctx.beginPath();
-
-
-let started = false;
-
-
-emaData.forEach(
-function(point){
-
-const startIndex =
-candles.length -
-visible.length;
-
-
-if(point.index < startIndex){
-
-return;
-
-}
-
-
-const visibleIndex =
-point.index -
-startIndex;
-
-
-if(
-visibleIndex < 0 ||
-visibleIndex >= visible.length
-){
-
-return;
-
-}
-
-
-const x =
-left +
-visibleIndex *
-candleWidth +
-candleWidth/2;
-
-
-const yy =
-y(point.value);
-
-
-if(!started){
-
-ctx.moveTo(
-x,
-yy
-);
-
-started = true;
-
-}else{
-
-ctx.lineTo(
-x,
-yy
-);
-
-}
-
-});
-
-
-ctx.stroke();
-
-
-/* Current price line */
-
-const last =
-visible[visible.length-1];
-
-
-const currentY =
-y(last.close);
-
-
-ctx.strokeStyle =
-"#999";
-
-ctx.setLineDash([
-4,
-4
-]);
-
-
-ctx.beginPath();
-
-ctx.moveTo(
-left,
-currentY
-);
-
-ctx.lineTo(
-width-right,
-currentY
-);
-
-ctx.stroke();
-
-
-ctx.setLineDash([]);
-
-
-ctx.fillStyle =
-"#181827";
-
-ctx.font =
-"12px Arial";
-
-ctx.fillText(
-formatChartPrice(last.close),
-width-right+5,
-currentY+4
-);
+  ctx.stroke();
 
 }
 
 
 /* =========================
-PRICE FORMAT
+   FORMAT PRICE
 ========================= */
 
-function formatChartPrice(
-price
-){
+function formatPrice(value){
 
-if(price >= 1000){
+  if(value >= 1000){
 
-return price.toFixed(0);
+    return "$" +
+      value.toLocaleString("en-US",{
+        maximumFractionDigits:0
+      });
 
-}
+  }
 
-if(price >= 1){
+  if(value >= 1){
 
-return price.toFixed(2);
+    return "$" +
+      value.toFixed(2);
 
-}
+  }
 
-return price.toFixed(5);
+  return "$" +
+    value.toFixed(6);
 
 }
 
 
 /* =========================
-TIMEFRAME
+   RSI UPDATE
 ========================= */
 
-function changeTimeframe(
-newTimeframe,
-button
-){
+function updateRSI(){
 
-timeframe =
-newTimeframe;
+  const closes =
+    candles.map(c => c.close);
 
+  const value =
+    calculateRSI(closes,14);
 
-document
-.querySelectorAll(
-".timeframes button"
-)
-.forEach(function(btn){
+  if(value === null) return;
 
-btn.classList.remove(
-"active"
-);
+  document.getElementById("rsi").textContent =
+    value.toFixed(2);
 
-});
+  let status = "Neutral";
 
+  if(value >= 70){
+    status = "Overbought";
+  }else if(value <= 30){
+    status = "Oversold";
+  }
 
-button.classList.add(
-"active"
-);
-
-
-loadChart();
+  document.getElementById("rsiStatus").textContent =
+    status;
 
 }
 
 
 /* =========================
-START
+   TIMEFRAME
 ========================= */
 
-resizeCanvas();
+function changeTimeframe(newTimeframe,button){
 
-loadChart();
+  timeframe =
+    newTimeframe;
+
+  document
+    .querySelectorAll(".timeframes button")
+    .forEach(function(btn){
+      btn.classList.remove("active");
+    });
+
+  button.classList.add("active");
+
+  loadChart();
+
+}
+
+
+/* =========================
+   RESIZE
+========================= */
+
+window.addEventListener(
+  "resize",
+  function(){
+    drawChart();
+  }
+);
+
+
+/* =========================
+   START
+========================= */
 
 loadPrice();
+loadChart();
 
+setInterval(loadPrice,5000);
 
-/* Update price */
-
-setInterval(
-loadPrice,
-5000
-);
-
-
-/* Update chart */
-
-setInterval(
-loadChart,
-30000
-);
-
+setInterval(loadChart,30000);
 
 </script>
 
-
 </body>
-
 </html>
