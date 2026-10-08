@@ -11,302 +11,303 @@
 <style>
 
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
 body{
-    font-family:Arial,sans-serif;
-    background:#fff;
-    color:#29292f;
-    padding-bottom:90px;
+font-family:Arial,sans-serif;
+background:#fff;
+color:#29292f;
+padding-bottom:90px;
 }
 
 /* HEADER */
 
 .header{
-    height:70px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-    border-bottom:1px solid #eeeeee;
-    background:#fff;
+height:70px;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+border-bottom:1px solid #eeeeee;
+background:#fff;
 }
 
 .header-title{
-    font-size:25px;
-    font-weight:700;
+font-size:25px;
+font-weight:700;
 }
 
 .header-left{
-    position:absolute;
-    left:22px;
-    font-size:34px;
-    line-height:1;
-    cursor:pointer;
-    font-weight:300;
+position:absolute;
+left:22px;
+font-size:34px;
+cursor:pointer;
 }
 
 .header-right{
-    position:absolute;
-    right:20px;
-    display:flex;
-    gap:18px;
-    align-items:center;
+position:absolute;
+right:20px;
+display:flex;
+gap:18px;
 }
 
 .header-right button{
-    border:0;
-    background:none;
-    font-size:24px;
-    cursor:pointer;
-    color:#222;
+border:0;
+background:none;
+font-size:25px;
+color:#222;
+cursor:pointer;
 }
 
 /* PROFILE */
 
 .profile{
-    padding:28px 25px 24px;
-    border-bottom:1px solid #eeeeee;
+padding:28px 25px 24px;
+border-bottom:1px solid #eeeeee;
 }
 
 .profile-top{
-    display:flex;
-    align-items:center;
-    gap:17px;
+display:flex;
+align-items:center;
+gap:16px;
 }
 
 .avatar{
-    width:100px;
-    height:100px;
-    border-radius:50%;
-    background:linear-gradient(145deg,#2456d9,#3159d8);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-    overflow:hidden;
-    flex-shrink:0;
+width:100px;
+height:100px;
+border-radius:50%;
+background:linear-gradient(145deg,#2456d9,#3159d8);
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+overflow:hidden;
+flex-shrink:0;
 }
 
 .avatar-head{
-    width:37px;
-    height:37px;
-    border-radius:50%;
-    background:#fff;
-    position:absolute;
-    top:21px;
+width:37px;
+height:37px;
+border-radius:50%;
+background:#fff;
+position:absolute;
+top:21px;
 }
 
 .avatar-body{
-    width:69px;
-    height:47px;
-    border-radius:50% 50% 0 0;
-    background:#fff;
-    position:absolute;
-    bottom:-3px;
+width:70px;
+height:48px;
+border-radius:50% 50% 0 0;
+background:#fff;
+position:absolute;
+bottom:-3px;
 }
 
 .profile-info{
-    flex:1;
+flex:1;
+min-width:0;
 }
 
 .username{
-    font-size:22px;
-    font-weight:500;
-    margin-bottom:9px;
+font-size:22px;
+font-weight:500;
+margin-bottom:9px;
 }
 
 .uid{
-    font-size:15px;
-    color:#999;
-    display:flex;
-    align-items:center;
-    gap:7px;
-    cursor:pointer;
+font-size:15px;
+color:#999;
+display:flex;
+align-items:center;
+gap:7px;
 }
 
 .copy-icon{
-    font-size:20px;
-    color:#a56ee8;
+font-size:19px;
+color:#a56ee8;
 }
 
 .profile-arrow{
-    font-size:31px;
-    color:#333;
+font-size:31px;
+color:#333;
 }
 
-.verified{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    margin-top:16px;
-    background:#dff7ef;
-    color:#20aa86;
-    padding:6px 13px;
-    border-radius:20px;
-    font-size:14px;
-    font-weight:600;
+.unverified{
+display:inline-flex;
+align-items:center;
+gap:6px;
+margin-top:16px;
+background:#fff2df;
+color:#e58a20;
+padding:6px 13px;
+border-radius:20px;
+font-size:14px;
+font-weight:600;
 }
 
 /* SECTIONS */
 
 .section{
-    padding:25px 22px 5px;
+padding:25px 22px 5px;
 }
 
 .section-title{
-    font-size:17px;
-    font-weight:600;
-    color:#222;
-    margin-bottom:18px;
+font-size:18px;
+font-weight:700;
+margin-bottom:20px;
 }
 
 /* QUICK ENTRY */
 
 .quick-grid{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:8px;
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:8px;
+width:100%;
 }
 
 .quick-item{
-    text-align:center;
-    cursor:pointer;
+text-align:center;
+cursor:pointer;
+min-width:0;
 }
 
 .quick-icon{
-    width:52px;
-    height:52px;
-    margin:0 auto 9px;
-    border-radius:15px;
-    background:#f7f4ff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:23px;
-    color:#8057c9;
+width:54px;
+height:54px;
+margin:0 auto 9px;
+border-radius:15px;
+background:#f7f4ff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:23px;
+color:#8057c9;
 }
 
 .quick-item span{
-    display:block;
-    font-size:11px;
-    color:#555;
-    white-space:nowrap;
+display:block;
+font-size:11px;
+color:#555;
+white-space:normal;
+line-height:1.2;
 }
 
 /* OTHERS */
 
 .other-list{
-    background:#fff;
+margin-top:5px;
 }
 
 .other-item{
-    height:60px;
-    display:flex;
-    align-items:center;
-    border-bottom:1px solid #eeeeee;
-    cursor:pointer;
+height:60px;
+display:flex;
+align-items:center;
+border-bottom:1px solid #eeeeee;
+cursor:pointer;
 }
 
 .other-icon{
-    width:42px;
-    font-size:21px;
-    color:#7654bd;
+width:42px;
+font-size:21px;
+color:#7654bd;
 }
 
 .other-name{
-    flex:1;
-    font-size:15px;
-    color:#333;
+flex:1;
+font-size:15px;
+color:#333;
 }
 
 .other-arrow{
-    font-size:25px;
-    color:#aaa;
+font-size:25px;
+color:#aaa;
 }
 
 /* SIGN OUT */
 
 .signout{
-    margin:30px 22px 15px;
-    height:50px;
-    border:1px solid #ef4f55;
-    border-radius:10px;
-    background:#fff;
-    color:#ef4f55;
-    font-size:16px;
-    font-weight:600;
-    width:calc(100% - 44px);
-    cursor:pointer;
+margin:30px 22px 15px;
+height:50px;
+border:1px solid #ef4f55;
+border-radius:10px;
+background:#fff;
+color:#ef4f55;
+font-size:16px;
+font-weight:600;
+width:calc(100% - 44px);
+cursor:pointer;
 }
 
+/* VERSION */
+
 .version{
-    text-align:center;
-    color:#aaa;
-    font-size:12px;
-    margin-top:10px;
+text-align:center;
+color:#aaa;
+font-size:12px;
+margin-top:10px;
 }
 
 /* BOTTOM NAV */
 
 .bottom-nav{
-    position:fixed;
-    left:0;
-    right:0;
-    bottom:0;
-    height:75px;
-    background:#fff;
-    border-top:1px solid #eeeeee;
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    z-index:100;
+position:fixed;
+left:0;
+right:0;
+bottom:0;
+height:75px;
+background:#fff;
+border-top:1px solid #eeeeee;
+display:grid;
+grid-template-columns:repeat(5,1fr);
+z-index:100;
 }
 
 .bottom-nav div{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    gap:5px;
-    font-size:11px;
-    color:#999;
-    cursor:pointer;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:5px;
+font-size:11px;
+color:#999;
+cursor:pointer;
 }
 
 .bottom-nav b{
-    font-size:22px;
-    font-weight:400;
+font-size:22px;
+font-weight:400;
 }
 
 .bottom-nav .active{
-    color:#7654bd;
+color:#7654bd;
 }
 
 /* TOAST */
 
 .toast{
-    position:fixed;
-    left:50%;
-    bottom:95px;
-    transform:translateX(-50%);
-    background:#29292f;
-    color:#fff;
-    padding:11px 18px;
-    border-radius:8px;
-    font-size:13px;
-    display:none;
-    z-index:500;
-    white-space:nowrap;
+position:fixed;
+left:50%;
+bottom:95px;
+transform:translateX(-50%);
+background:#29292f;
+color:#fff;
+padding:11px 18px;
+border-radius:8px;
+font-size:13px;
+display:none;
+z-index:500;
+white-space:nowrap;
 }
 
-/* DARK MODE */
+/* DARK */
 
 body.dark{
-    background:#111216;
-    color:#fff;
+background:#111216;
+color:#fff;
 }
 
 body.dark .header,
@@ -314,15 +315,14 @@ body.dark .profile,
 body.dark .other-list,
 body.dark .bottom-nav,
 body.dark .signout{
-    background:#111216;
+background:#111216;
 }
 
-body.dark .header{
-    border-color:#25262c;
-}
-
-body.dark .profile{
-    border-color:#25262c;
+body.dark .header,
+body.dark .profile,
+body.dark .other-item,
+body.dark .bottom-nav{
+border-color:#25262c;
 }
 
 body.dark .header-title,
@@ -330,36 +330,15 @@ body.dark .header-right button,
 body.dark .profile-arrow,
 body.dark .section-title,
 body.dark .other-name{
-    color:#fff;
-}
-
-body.dark .uid,
-body.dark .version{
-    color:#888;
-}
-
-body.dark .other-item{
-    border-color:#25262c;
+color:#fff;
 }
 
 body.dark .quick-icon{
-    background:#211d2c;
+background:#211d2c;
 }
 
 body.dark .quick-item span{
-    color:#bbb;
-}
-
-body.dark .bottom-nav{
-    border-color:#25262c;
-}
-
-body.dark .bottom-nav div{
-    color:#777;
-}
-
-body.dark .bottom-nav .active{
-    color:#a77be8;
+color:#bbb;
 }
 
 </style>
@@ -368,21 +347,33 @@ body.dark .bottom-nav .active{
 
 <body>
 
+
 <!-- HEADER -->
 
 <div class="header">
 
-    <div class="header-left" onclick="goHome()">‹</div>
+<div
+class="header-left"
+onclick="goHome()"
+>
+‹
+</div>
 
-    <div class="header-title">Profile</div>
+<div class="header-title">
+Profile
+</div>
 
-    <div class="header-right">
+<div class="header-right">
 
-        <button onclick="toggleDark()">☾</button>
+<button onclick="toggleDark()">
+☾
+</button>
 
-        <button onclick="showToast('Language: English')">◎</button>
+<button onclick="showToast('Language: English')">
+◎
+</button>
 
-    </div>
+</div>
 
 </div>
 
@@ -391,41 +382,49 @@ body.dark .bottom-nav .active{
 
 <div class="profile">
 
-    <div class="profile-top">
+<div class="profile-top">
 
-        <div class="avatar">
+<div class="avatar">
 
-            <div class="avatar-head"></div>
+<div class="avatar-head"></div>
 
-            <div class="avatar-body"></div>
+<div class="avatar-body"></div>
 
-        </div>
+</div>
 
-        <div class="profile-info">
 
-            <div class="username">
-                user_95618978
-            </div>
+<div class="profile-info">
 
-            <div class="uid" onclick="copyUID()">
+<div class="username">
+user_95618978
+</div>
 
-                UID: 95618978
+<div
+class="uid"
+onclick="copyUID()"
+>
 
-                <span class="copy-icon">▣</span>
+UID: 95618978
 
-            </div>
+<span class="copy-icon">
+▣
+</span>
 
-            <div class="verified">
-                ✓ Verified
-            </div>
+</div>
 
-        </div>
 
-        <div class="profile-arrow">
-            ›
-        </div>
+<div class="unverified">
+! Unverified
+</div>
 
-    </div>
+</div>
+
+
+<div class="profile-arrow">
+›
+</div>
+
+</div>
 
 </div>
 
@@ -434,18 +433,374 @@ body.dark .bottom-nav .active{
 
 <div class="section">
 
-    <div class="section-title">
-        Quick Entry
-    </div>
+<div class="section-title">
+Quick Entry
+</div>
 
-    <div class="quick-grid">
 
-        <div class="quick-item" onclick="showToast('Security')">
+<div class="quick-grid">
 
-            <div class="quick-icon">🔐</div>
 
-            <span>Security</span>
+<div
+class="quick-item"
+onclick="showToast('Security')"
+>
 
-        </div>
+<div class="quick-icon">
+🔐
+</div>
 
-        <div class="quick-item" onclick="
+<span>
+Security
+</span>
+
+</div>
+
+
+<div
+class="quick-item"
+onclick="openKYC()"
+>
+
+<div class="quick-icon">
+✓
+</div>
+
+<span>
+KYC
+</span>
+
+</div>
+
+
+<div
+class="quick-item"
+onclick="showToast('Customer Service')"
+>
+
+<div class="quick-icon">
+♧
+</div>
+
+<span>
+Customer Service
+</span>
+
+</div>
+
+
+<div
+class="quick-item"
+onclick="showToast('Team Data')"
+>
+
+<div class="quick-icon">
+♙
+</div>
+
+<span>
+Team Data
+</span>
+
+</div>
+
+
+<div
+class="quick-item"
+onclick="showToast('Download APP')"
+>
+
+<div class="quick-icon">
+↓
+</div>
+
+<span>
+Download APP
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- OTHERS -->
+
+<div class="section">
+
+<div class="section-title">
+Others
+</div>
+
+
+<div class="other-list">
+
+
+<div
+class="other-item"
+onclick="showToast('About Us')"
+>
+
+<div class="other-icon">
+ⓘ
+</div>
+
+<div class="other-name">
+About Us
+</div>
+
+<div class="other-arrow">
+›
+</div>
+
+</div>
+
+
+<div
+class="other-item"
+onclick="showToast('Exchange Rates')"
+>
+
+<div class="other-icon">
+↔
+</div>
+
+<div class="other-name">
+Exchange Rates
+</div>
+
+<div class="other-arrow">
+›
+</div>
+
+</div>
+
+
+<div
+class="other-item"
+onclick="clearCache()"
+>
+
+<div class="other-icon">
+♻
+</div>
+
+<div class="other-name">
+Clear Cache
+</div>
+
+<div class="other-arrow">
+›
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- SIGN OUT -->
+
+<button
+class="signout"
+onclick="signOut()"
+>
+Sign Out
+</button>
+
+
+<div class="version">
+EliteHub Experimental Platform · v1.0.0
+</div>
+
+
+<!-- BOTTOM NAV -->
+
+<div class="bottom-nav">
+
+
+<div onclick="location.href='index.html'">
+
+<b>▣</b>
+
+<span>
+Assets
+</span>
+
+</div>
+
+
+<div onclick="location.href='contract.html'">
+
+<b>◈</b>
+
+<span>
+Contract
+</span>
+
+</div>
+
+
+<div onclick="location.href='trade.html'">
+
+<b>⇄</b>
+
+<span>
+Trade
+</span>
+
+</div>
+
+
+<div onclick="location.href='market.html'">
+
+<b>◉</b>
+
+<span>
+Market
+</span>
+
+</div>
+
+
+<div
+class="active"
+onclick="location.href='me.html'"
+>
+
+<b>♙</b>
+
+<span>
+Me
+</span>
+
+</div>
+
+
+</div>
+
+
+<div
+class="toast"
+id="toast"
+></div>
+
+
+<script>
+
+function goHome(){
+
+location.href="index.html";
+
+}
+
+
+function showToast(message){
+
+const toast=
+document.getElementById("toast");
+
+toast.textContent=message;
+
+toast.style.display="block";
+
+setTimeout(function(){
+
+toast.style.display="none";
+
+},1800);
+
+}
+
+
+function copyUID(){
+
+const uid="95618978";
+
+if(navigator.clipboard){
+
+navigator.clipboard.writeText(uid)
+.then(function(){
+
+showToast("UID copied");
+
+})
+.catch(function(){
+
+showToast("UID: "+uid);
+
+});
+
+}else{
+
+showToast("UID: "+uid);
+
+}
+
+}
+
+
+/* KYC */
+
+function openKYC(){
+
+showToast("KYC verification will be connected to the backend");
+
+}
+
+
+function clearCache(){
+
+showToast("Cache cleared");
+
+}
+
+
+function signOut(){
+
+showToast("Sign out is simulated");
+
+}
+
+
+function toggleDark(){
+
+document.body.classList.toggle("dark");
+
+if(
+document.body.classList.contains("dark")
+){
+
+localStorage.setItem(
+"elitehub_dark",
+"1"
+);
+
+}else{
+
+localStorage.removeItem(
+"elitehub_dark"
+);
+
+}
+
+}
+
+
+if(
+localStorage.getItem("elitehub_dark")==="1"
+){
+
+document.body.classList.add("dark");
+
+}
+
+</script>
+
+</body>
+
+</html>
