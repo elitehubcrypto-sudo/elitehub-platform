@@ -52,6 +52,7 @@ position:absolute;
 right:20px;
 display:flex;
 gap:18px;
+align-items:center;
 }
 
 .header-right button{
@@ -60,6 +61,46 @@ background:none;
 font-size:25px;
 color:#222;
 cursor:pointer;
+}
+
+/* LANGUAGE MENU */
+
+.language-menu{
+display:none;
+position:absolute;
+top:58px;
+right:10px;
+width:190px;
+background:#fff;
+border-radius:14px;
+box-shadow:0 10px 30px #00000022;
+border:1px solid #eeeeee;
+padding:8px;
+z-index:200;
+}
+
+.language-menu.show{
+display:block;
+}
+
+.language-item{
+display:flex;
+align-items:center;
+gap:10px;
+padding:11px 10px;
+border-radius:9px;
+font-size:14px;
+cursor:pointer;
+}
+
+.language-item:hover{
+background:#f5f2ff;
+}
+
+.language-item.active{
+background:#f2edff;
+color:#7654bd;
+font-weight:bold;
 }
 
 /* PROFILE */
@@ -123,6 +164,7 @@ color:#999;
 display:flex;
 align-items:center;
 gap:7px;
+cursor:pointer;
 }
 
 .copy-icon{
@@ -303,7 +345,7 @@ z-index:500;
 white-space:nowrap;
 }
 
-/* DARK */
+/* DARK MODE */
 
 body.dark{
 background:#111216;
@@ -314,7 +356,8 @@ body.dark .header,
 body.dark .profile,
 body.dark .other-list,
 body.dark .bottom-nav,
-body.dark .signout{
+body.dark .signout,
+body.dark .language-menu{
 background:#111216;
 }
 
@@ -341,6 +384,15 @@ body.dark .quick-item span{
 color:#bbb;
 }
 
+body.dark .language-item{
+color:#ddd;
+}
+
+body.dark .language-item:hover,
+body.dark .language-item.active{
+background:#211d2c;
+}
+
 </style>
 
 </head>
@@ -359,19 +411,112 @@ onclick="goHome()"
 ‹
 </div>
 
-<div class="header-title">
+<div
+class="header-title"
+data-i18n="profile"
+>
 Profile
 </div>
 
+
 <div class="header-right">
 
-<button onclick="toggleDark()">
+<!-- DARK MODE -->
+
+<button
+onclick="toggleDark()"
+>
 ☾
 </button>
 
-<button onclick="showToast('Language: English')">
+
+<!-- LANGUAGE -->
+
+<button
+onclick="toggleLanguageMenu()"
+>
 ◎
 </button>
+
+
+<div
+class="language-menu"
+id="languageMenu"
+>
+
+<div
+class="language-item"
+data-lang="en"
+onclick="changeLanguage('en')"
+>
+🇬🇧 English
+</div>
+
+<div
+class="language-item"
+data-lang="ar"
+onclick="changeLanguage('ar')"
+>
+🇪🇬 العربية
+</div>
+
+<div
+class="language-item"
+data-lang="fr"
+onclick="changeLanguage('fr')"
+>
+🇫🇷 Français
+</div>
+
+<div
+class="language-item"
+data-lang="es"
+onclick="changeLanguage('es')"
+>
+🇪🇸 Español
+</div>
+
+<div
+class="language-item"
+data-lang="tr"
+onclick="changeLanguage('tr')"
+>
+🇹🇷 Türkçe
+</div>
+
+<div
+class="language-item"
+data-lang="ru"
+onclick="changeLanguage('ru')"
+>
+🇷🇺 Русский
+</div>
+
+<div
+class="language-item"
+data-lang="zh"
+onclick="changeLanguage('zh')"
+>
+🇨🇳 中文
+</div>
+
+<div
+class="language-item"
+data-lang="hi"
+onclick="changeLanguage('hi')"
+>
+🇮🇳 हिन्दी
+</div>
+
+<div
+class="language-item"
+data-lang="uz"
+onclick="changeLanguage('uz')"
+>
+🇺🇿 O‘zbekcha
+</div>
+
+</div>
 
 </div>
 
@@ -414,7 +559,7 @@ UID: 95618978
 
 
 <div class="unverified">
-! Unverified
+! <span data-i18n="unverified">Unverified</span>
 </div>
 
 </div>
@@ -433,7 +578,10 @@ UID: 95618978
 
 <div class="section">
 
-<div class="section-title">
+<div
+class="section-title"
+data-i18n="quickEntry"
+>
 Quick Entry
 </div>
 
@@ -450,7 +598,7 @@ onclick="showToast('Security')"
 🔐
 </div>
 
-<span>
+<span data-i18n="security">
 Security
 </span>
 
@@ -466,7 +614,7 @@ onclick="openKYC()"
 ✓
 </div>
 
-<span>
+<span data-i18n="kyc">
 KYC
 </span>
 
@@ -482,7 +630,7 @@ onclick="showToast('Customer Service')"
 ♧
 </div>
 
-<span>
+<span data-i18n="customerService">
 Customer Service
 </span>
 
@@ -498,7 +646,7 @@ onclick="showToast('Team Data')"
 ♙
 </div>
 
-<span>
+<span data-i18n="teamData">
 Team Data
 </span>
 
@@ -514,7 +662,7 @@ onclick="showToast('Download APP')"
 ↓
 </div>
 
-<span>
+<span data-i18n="downloadApp">
 Download APP
 </span>
 
@@ -530,7 +678,10 @@ Download APP
 
 <div class="section">
 
-<div class="section-title">
+<div
+class="section-title"
+data-i18n="others"
+>
 Others
 </div>
 
@@ -547,7 +698,10 @@ onclick="showToast('About Us')"
 ⓘ
 </div>
 
-<div class="other-name">
+<div
+class="other-name"
+data-i18n="aboutUs"
+>
 About Us
 </div>
 
@@ -567,7 +721,10 @@ onclick="showToast('Exchange Rates')"
 ↔
 </div>
 
-<div class="other-name">
+<div
+class="other-name"
+data-i18n="exchangeRates"
+>
 Exchange Rates
 </div>
 
@@ -587,7 +744,10 @@ onclick="clearCache()"
 ♻
 </div>
 
-<div class="other-name">
+<div
+class="other-name"
+data-i18n="clearCache"
+>
 Clear Cache
 </div>
 
@@ -608,6 +768,7 @@ Clear Cache
 <button
 class="signout"
 onclick="signOut()"
+data-i18n="signOut"
 >
 Sign Out
 </button>
@@ -627,7 +788,7 @@ EliteHub Experimental Platform · v1.0.0
 
 <b>▣</b>
 
-<span>
+<span data-i18n="assets">
 Assets
 </span>
 
@@ -638,7 +799,7 @@ Assets
 
 <b>◈</b>
 
-<span>
+<span data-i18n="contract">
 Contract
 </span>
 
@@ -649,7 +810,7 @@ Contract
 
 <b>⇄</b>
 
-<span>
+<span data-i18n="trade">
 Trade
 </span>
 
@@ -660,7 +821,7 @@ Trade
 
 <b>◉</b>
 
-<span>
+<span data-i18n="market">
 Market
 </span>
 
@@ -674,7 +835,7 @@ onclick="location.href='me.html'"
 
 <b>♙</b>
 
-<span>
+<span data-i18n="me">
 Me
 </span>
 
@@ -692,12 +853,16 @@ id="toast"
 
 <script>
 
+/* HOME */
+
 function goHome(){
 
 location.href="index.html";
 
 }
 
+
+/* TOAST */
 
 function showToast(message){
 
@@ -716,6 +881,8 @@ toast.style.display="none";
 
 }
 
+
+/* COPY UID */
 
 function copyUID(){
 
@@ -748,10 +915,14 @@ showToast("UID: "+uid);
 
 function openKYC(){
 
-showToast("KYC verification will be connected to the backend");
+showToast(
+"KYC verification will be connected to the backend"
+);
 
 }
 
+
+/* CACHE */
 
 function clearCache(){
 
@@ -760,12 +931,16 @@ showToast("Cache cleared");
 }
 
 
+/* SIGN OUT */
+
 function signOut(){
 
 showToast("Sign out is simulated");
 
 }
 
+
+/* DARK MODE */
 
 function toggleDark(){
 
@@ -799,8 +974,195 @@ document.body.classList.add("dark");
 
 }
 
-</script>
 
-</body>
+/* LANGUAGE MENU */
 
-</html>
+function toggleLanguageMenu(){
+
+const menu=
+document.getElementById("languageMenu");
+
+menu.classList.toggle("show");
+
+}
+
+
+/* TRANSLATIONS */
+
+const translations={
+
+en:{
+profile:"Profile",
+unverified:"Unverified",
+quickEntry:"Quick Entry",
+security:"Security",
+kyc:"KYC",
+customerService:"Customer Service",
+teamData:"Team Data",
+downloadApp:"Download APP",
+others:"Others",
+aboutUs:"About Us",
+exchangeRates:"Exchange Rates",
+clearCache:"Clear Cache",
+signOut:"Sign Out",
+assets:"Assets",
+contract:"Contract",
+trade:"Trade",
+market:"Market",
+me:"Me"
+},
+
+ar:{
+profile:"الملف الشخصي",
+unverified:"غير موثق",
+quickEntry:"الدخول السريع",
+security:"الأمان",
+kyc:"التحقق من الهوية",
+customerService:"خدمة العملاء",
+teamData:"بيانات الفريق",
+downloadApp:"تحميل التطبيق",
+others:"أخرى",
+aboutUs:"من نحن",
+exchangeRates:"أسعار الصرف",
+clearCache:"مسح ذاكرة التخزين",
+signOut:"تسجيل الخروج",
+assets:"الأصول",
+contract:"العقود",
+trade:"التداول",
+market:"السوق",
+me:"حسابي"
+},
+
+fr:{
+profile:"Profil",
+unverified:"Non vérifié",
+quickEntry:"Accès rapide",
+security:"Sécurité",
+kyc:"KYC",
+customerService:"Service client",
+teamData:"Données de l'équipe",
+downloadApp:"Télécharger l'application",
+others:"Autres",
+aboutUs:"À propos",
+exchangeRates:"Taux de change",
+clearCache:"Vider le cache",
+signOut:"Déconnexion",
+assets:"Actifs",
+contract:"Contrat",
+trade:"Trading",
+market:"Marché",
+me:"Profil"
+},
+
+es:{
+profile:"Perfil",
+unverified:"No verificado",
+quickEntry:"Acceso rápido",
+security:"Seguridad",
+kyc:"KYC",
+customerService:"Atención al cliente",
+teamData:"Datos del equipo",
+downloadApp:"Descargar APP",
+others:"Otros",
+aboutUs:"Sobre nosotros",
+exchangeRates:"Tipos de cambio",
+clearCache:"Limpiar caché",
+signOut:"Cerrar sesión",
+assets:"Activos",
+contract:"Contrato",
+trade:"Trading",
+market:"Mercado",
+me:"Perfil"
+},
+
+tr:{
+profile:"Profil",
+unverified:"Doğrulanmamış",
+quickEntry:"Hızlı Erişim",
+security:"Güvenlik",
+kyc:"KYC",
+customerService:"Müşteri Hizmetleri",
+teamData:"Ekip Verileri",
+downloadApp:"Uygulamayı İndir",
+others:"Diğer",
+aboutUs:"Hakkımızda",
+exchangeRates:"Döviz Kurları",
+clearCache:"Önbelleği Temizle",
+signOut:"Çıkış Yap",
+assets:"Varlıklar",
+contract:"Sözleşme",
+trade:"İşlem",
+market:"Piyasa",
+me:"Profil"
+},
+
+ru:{
+profile:"Профиль",
+unverified:"Не подтверждено",
+quickEntry:"Быстрый доступ",
+security:"Безопасность",
+kyc:"KYC",
+customerService:"Поддержка",
+teamData:"Данные команды",
+downloadApp:"Скачать приложение",
+others:"Другое",
+aboutUs:"О нас",
+exchangeRates:"Курсы валют",
+clearCache:"Очистить кэш",
+signOut:"Выйти",
+assets:"Активы",
+contract:"Контракт",
+trade:"Торговля",
+market:"Рынок",
+me:"Профиль"
+},
+
+zh:{
+profile:"个人资料",
+unverified:"未验证",
+quickEntry:"快速入口",
+security:"安全",
+kyc:"身份验证",
+customerService:"客服",
+teamData:"团队数据",
+downloadApp:"下载应用",
+others:"其他",
+aboutUs:"关于我们",
+exchangeRates:"汇率",
+clearCache:"清除缓存",
+signOut:"退出登录",
+assets:"资产",
+contract:"合约",
+trade:"交易",
+market:"市场",
+me:"我的"
+},
+
+hi:{
+profile:"प्रोफ़ाइल",
+unverified:"सत्यापित नहीं",
+quickEntry:"त्वरित प्रवेश",
+security:"सुरक्षा",
+kyc:"KYC",
+customerService:"ग्राहक सेवा",
+teamData:"टीम डेटा",
+downloadApp:"ऐप डाउनलोड करें",
+others:"अन्य",
+aboutUs:"हमारे बारे में",
+exchangeRates:"विनिमय दरें",
+clearCache:"कैश साफ़ करें",
+signOut:"साइन आउट",
+assets:"एसेट्स",
+contract:"कॉन्ट्रैक्ट",
+trade:"ट्रेड",
+market:"मार्केट",
+me:"प्रोफ़ाइल"
+},
+
+uz:{
+profile:"Profil",
+unverified:"Tasdiqlanmagan",
+quickEntry:"Tezkor kirish",
+security:"Xavfsizlik",
+kyc:"KYC",
+customerService:"Mijozlarga
