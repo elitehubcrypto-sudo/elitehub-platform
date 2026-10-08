@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -13,14 +14,14 @@
 *{
 box-sizing:border-box;
 margin:0;
-padding:0
+padding:0;
 }
 
 body{
 font-family:Arial,sans-serif;
 background:#fff;
-color:#191827;
-padding-bottom:95px
+color:#29292f;
+padding-bottom:90px;
 }
 
 .header{
@@ -28,875 +29,124 @@ height:70px;
 display:flex;
 align-items:center;
 justify-content:center;
-position:sticky;
-top:0;
+position:relative;
+border-bottom:1px solid #f1f1f1;
 background:#fff;
-z-index:10;
-border-bottom:1px solid #f2f2f2
 }
 
-.header h1{
+.header-title{
 font-size:25px;
-font-weight:800
+font-weight:700;
 }
 
-.header-icons{
+.header-left{
 position:absolute;
-right:20px;
-display:flex;
-align-items:center;
-gap:20px
+left:25px;
+font-size:34px;
+line-height:1;
+cursor:pointer;
+font-weight:300;
 }
 
-.header-icons button{
+.header-right{
+position:absolute;
+right:22px;
+display:flex;
+gap:22px;
+align-items:center;
+}
+
+.header-right button{
 border:0;
 background:none;
-font-size:26px;
+font-size:27px;
 cursor:pointer;
-color:#191827
+color:#222;
 }
 
-.container{
-max-width:650px;
-margin:auto;
-padding:20px 30px
+/* PROFILE */
+
+.profile{
+padding:28px 28px 25px;
+border-bottom:1px solid #eeeeee;
 }
 
-/* Profile Card */
-
-.profile-card{
-border:1px solid #e5e5e5;
-border-radius:25px;
-padding:30px 25px;
-display:flex;
-align-items:center;
-gap:22px;
-min-height:270px;
-box-shadow:0 5px 20px #00000005;
-margin-bottom:22px
-}
-
-.avatar{
-width:155px;
-height:155px;
-border-radius:50%;
-background:linear-gradient(135deg,#18b7c9,#7253ed);
-display:flex;
-align-items:center;
-justify-content:center;
-color:#fff;
-font-size:40px;
-font-weight:800;
-border:10px solid #e7f8fa;
-flex-shrink:0
-}
-
-.profile-info{
-flex:1
-}
-
-.username{
-font-size:24px;
-font-weight:800;
-margin-bottom:14px
-}
-
-.uid{
-font-size:15px;
-color:#777;
-margin-bottom:15px;
-cursor:pointer
-}
-
-.badges{
-display:flex;
-gap:8px;
-flex-wrap:wrap
-}
-
-.badge{
-padding:8px 11px;
-border-radius:8px;
-font-size:13px;
-font-weight:bold
-}
-
-.vip{
-background:#f5f0df;
-color:#977424
-}
-
-.verified{
-background:#e2f5f0;
-color:#239b83
-}
-
-.arrow{
-font-size:25px;
-color:#777
-}
-
-/* Referral */
-
-.referral{
-background:linear-gradient(135deg,#f3f0ff,#edfaff);
-border:1px solid #bce8ee;
-border-radius:22px;
-padding:20px;
+.profile-top{
 display:flex;
 align-items:center;
 gap:18px;
-margin-bottom:35px;
-cursor:pointer
-}
-
-.referral-icon{
-font-size:35px
-}
-
-.referral-text{
-font-size:18px;
-font-weight:800;
-flex:1
-}
-
-.referral-arrow{
-font-size:24px;
-color:#777
-}
-
-/* Sections */
-
-.section-title{
-font-size:20px;
-font-weight:800;
-margin:0 0 15px 5px
-}
-
-.settings-box{
-border:1px solid #e6e6e6;
-border-radius:22px;
-overflow:hidden;
-margin-bottom:35px;
-box-shadow:0 5px 20px #00000004
-}
-
-.setting{
-min-height:80px;
-display:flex;
-align-items:center;
-padding:0 20px;
-border-bottom:1px solid #e8e8e8;
-cursor:pointer
-}
-
-.setting:last-child{
-border-bottom:0
-}
-
-.setting-icon{
-width:45px;
-font-size:25px;
-color:#168a95;
-display:flex;
-align-items:center
-}
-
-.setting-name{
-font-size:18px;
-flex:1
-}
-
-.setting-status{
-font-size:16px;
-color:#777;
-display:flex;
-align-items:center;
-gap:7px
-}
-
-.setting-arrow{
-font-size:22px;
-color:#777
-}
-
-/* Logout */
-
-.logout{
-height:65px;
-width:100%;
-border:1px solid #f1d3d3;
-border-radius:18px;
-background:#fff0f0;
-color:#b72d36;
-font-size:18px;
-font-weight:800;
-cursor:pointer;
-margin-bottom:25px
-}
-
-/* Bottom Navigation */
-
-.bottom{
-position:fixed;
-left:0;
-right:0;
-bottom:0;
-height:78px;
-background:#fff;
-border-top:1px solid #eee;
-display:flex;
-justify-content:space-around;
-align-items:center;
-z-index:20
-}
-
-.nav-item{
-width:20%;
-text-align:center;
-color:#a2a6ae;
-font-size:12px;
-cursor:pointer
-}
-
-.nav-icon{
-font-size:25px;
-height:32px;
-display:flex;
-align-items:center;
-justify-content:center;
-margin-bottom:3px
-}
-
-.nav-item.active{
-color:#191827
-}
-
-/* Center Trade */
-
-.trade-holder{
-width:70px;
-height:70px;
-margin-top:-30px;
-border-radius:50%;
-background:#17b8c8;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#111;
-font-size:27px;
-border:8px solid #fff;
-box-shadow:0 4px 20px #17b8c855
-}
-
-.trade-label{
-margin-top:2px
-}
-
-/* Responsive */
-
-@media(max-width:480px){
-
-.container{
-padding:18px 30px
-}
-
-.profile-card{
-padding:25px 20px;
-gap:15px;
-min-height:220px
 }
 
 .avatar{
 width:105px;
 height:105px;
-font-size:30px;
-border-width:7px
+border-radius:50%;
+background:linear-gradient(
+145deg,
+#2456d9,
+#3159d8
+);
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+overflow:hidden;
+flex-shrink:0;
+}
+
+.avatar-head{
+width:38px;
+height:38px;
+border-radius:50%;
+background:#fff;
+position:absolute;
+top:22px;
+}
+
+.avatar-body{
+width:70px;
+height:48px;
+border-radius:50% 50% 0 0;
+background:#fff;
+position:absolute;
+bottom:-3px;
+}
+
+.profile-info{
+flex:1;
 }
 
 .username{
-font-size:21px
+font-size:23px;
+font-weight:500;
+margin-bottom:10px;
 }
 
 .uid{
-font-size:13px
+font-size:16px;
+color:#999;
+display:flex;
+align-items:center;
+gap:8px;
+cursor:pointer;
 }
 
-.badge{
-font-size:11px;
-padding:7px 9px
+.copy-icon{
+font-size:23px;
+color:#b477e8;
 }
 
-.setting{
-min-height:75px;
-padding:0 18px
+.profile-arrow{
+font-size:32px;
+color:#333;
 }
 
-.setting-name{
-font-size:17px
-}
-
-.setting-status{
-font-size:14px
-}
-
-}
-
-@media(max-width:380px){
-
-.profile-card{
-padding:20px 15px
-}
-
-.avatar{
-width:90px;
-height:90px
-}
-
-.username{
-font-size:18px
-}
-
-.setting-name{
-font-size:15px
-}
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-
-<!-- HEADER -->
-
-<header class="header">
-
-<h1>Profile</h1>
-
-<div class="header-icons">
-
-<button onclick="support()">
-♧
-</button>
-
-<button onclick="toggleTheme()">
-☼
-</button>
-
-</div>
-
-</header>
-
-
-<main class="container">
-
-
-<!-- PROFILE -->
-
-<div class="profile-card">
-
-<div class="avatar">
-EH
-</div>
-
-<div class="profile-info">
-
-<div class="username">
-user_990605787
-</div>
-
-<div class="uid" onclick="copyUID()">
-UID: 990605787 · Tap to copy
-</div>
-
-<div class="badges">
-
-<span class="badge vip">
-VIP 1
-</span>
-
-<span class="badge verified">
-Verified
-</span>
-
-</div>
-
-</div>
-
-<div class="arrow">
-›
-</div>
-
-</div>
-
-
-<!-- REFERRAL -->
-
-<div class="referral" onclick="referral()">
-
-<div class="referral-icon">
-🎁
-</div>
-
-<div class="referral-text">
-Referral center
-</div>
-
-<div class="referral-arrow">
-›
-</div>
-
-</div>
-
-
-<!-- SECURITY -->
-
-<h2 class="section-title">
-Security &amp; account
-</h2>
-
-
-<div class="settings-box">
-
-
-<div class="setting" onclick="securityCenter()">
-
-<div class="setting-icon">
-♢
-</div>
-
-<div class="setting-name">
-Security center
-</div>
-
-<div class="setting-status">
-Low
-<span class="setting-arrow">›</span>
-</div>
-
-</div>
-
-
-<div class="setting" onclick="fundPassword()">
-
-<div class="setting-icon">
-♙
-</div>
-
-<div class="setting-name">
-Fund Password
-</div>
-
-<div class="setting-status">
-Not set
-<span class="setting-arrow">›</span>
-</div>
-
-</div>
-
-
-<div class="setting" onclick="twoFA()">
-
-<div class="setting-icon">
-♢
-</div>
-
-<div class="setting-name">
-Google 2FA
-</div>
-
-<div class="setting-status">
-Disabled
-<span class="setting-arrow">›</span>
-</div>
-
-</div>
-
-
-<div class="setting" onclick="kyc()">
-
-<div class="setting-icon">
-♙
-</div>
-
-<div class="setting-name">
-KYC Verification
-</div>
-
-<div class="setting-status">
-Verified
-<span class="setting-arrow">›</span>
-</div>
-
-</div>
-
-
-</div>
-
-
-<!-- PREFERENCES -->
-
-<h2 class="section-title">
-Preferences &amp; support
-</h2>
-
-
-<div class="settings-box">
-
-
-<div class="setting" onclick="language()">
-
-<div class="setting-icon">
-☼
-</div>
-
-<div class="setting-name">
-Language
-</div>
-
-<div class="setting-status">
-English
-<span class="setting-arrow">›</span>
-</div>
-
-</div>
-
-
-<div class="setting" onclick="aboutEliteHub()">
-
-<div class="setting-icon">
-▦
-</div>
-
-<div class="setting-name">
-About EliteHub
-</div>
-
-<div class="setting-status">
-<span class="setting-arrow">›</span>
-</div>
-
-</div>
-
-
-<div class="setting" onclick="terms()">
-
-<div class="setting-icon">
-▤
-</div>
-
-<div class="setting-name">
-Terms of Service
-</div>
-
-<div class="setting-status">
-<span class="setting-arrow">›</span>
-</div>
-
-</div>
-
-
-<div class="setting" onclick="privacy()">
-
-<div class="setting-icon">
-▤
-</div>
-
-<div class="setting-name">
-Privacy Policy
-</div>
-
-<div class="setting-status">
-<span class="setting-arrow">›</span>
-</div>
-
-</div>
-
-
-<div class="setting" onclick="whitepaper()">
-
-<div class="setting-icon">
-▤
-</div>
-
-<div class="setting-name">
-Whitepaper
-</div>
-
-<div class="setting-status">
-<span class="setting-arrow">›</span>
-</div>
-
-</div>
-
-
-</div>
-
-
-<!-- LOGOUT -->
-
-<button class="logout" onclick="logout()">
-Log out
-</button>
-
-
-</main>
-
-
-<!-- BOTTOM NAVIGATION -->
-
-<nav class="bottom">
-
-
-<div class="nav-item" onclick="goHome()">
-
-<div class="nav-icon">
-⌂
-</div>
-
-Home
-
-</div>
-
-
-<div class="nav-item" onclick="goMarkets()">
-
-<div class="nav-icon">
-▥
-</div>
-
-Markets
-
-</div>
-
-
-<div class="nav-item" onclick="goTrade()">
-
-<div class="trade-holder">
-↗
-</div>
-
-<div class="trade-label">
-Trade
-</div>
-
-</div>
-
-
-<div class="nav-item" onclick="goAssets()">
-
-<div class="nav-icon">
-▣
-</div>
-
-Assets
-
-</div>
-
-
-<div class="nav-item active">
-
-<div class="nav-icon">
-♙
-</div>
-
-Me
-
-</div>
-
-
-</nav>
-
-
-<script>
-
-
-function copyUID(){
-
-navigator.clipboard.writeText(
-"990605787"
-);
-
-alert(
-"UID copied"
-);
-
-}
-
-
-function support(){
-
-alert(
-"EliteHub Support\n\nSupport center is currently available for the experimental platform."
-);
-
-}
-
-
-function toggleTheme(){
-
-document.body.classList.toggle(
-"dark"
-);
-
-if(
-document.body.classList.contains("dark")
-){
-
-document.body.style.background =
-"#11111a";
-
-document.body.style.color =
-"#ffffff";
-
-}else{
-
-document.body.style.background =
-"#ffffff";
-
-document.body.style.color =
-"#191827";
-
-}
-
-}
-
-
-function referral(){
-
-alert(
-"Referral Center\n\nReferral features are currently simulated."
-);
-
-}
-
-
-function securityCenter(){
-
-alert(
-"Security Center\n\nSecurity level: Low"
-);
-
-}
-
-
-function fundPassword(){
-
-alert(
-"Fund Password\n\nFund password is not set."
-);
-
-}
-
-
-function twoFA(){
-
-alert(
-"Google 2FA\n\nGoogle 2FA is currently disabled."
-);
-
-}
-
-
-function kyc(){
-
-alert(
-"KYC Verification\n\nVerification status: Verified (Demo)"
-);
-
-}
-
-
-function language(){
-
-alert(
-"Language\n\nEnglish"
-);
-
-}
-
-
-function aboutEliteHub(){
-
-alert(
-"EliteHub\n\nExperimental crypto trading platform for learning and interface testing."
-);
-
-}
-
-
-function terms(){
-
-alert(
-"Terms of Service\n\nThis is a simulated platform. No real financial transactions are performed."
-);
-
-}
-
-
-function privacy(){
-
-alert(
-"Privacy Policy\n\nThis experimental interface does not process real financial transactions."
-);
-
-}
-
-
-function whitepaper(){
-
-alert(
-"Whitepaper\n\nEliteHub experimental platform documentation."
-);
-
-}
-
-
-function logout(){
-
-alert(
-"Logout is simulated."
-);
-
-}
-
-
-function goHome(){
-
-location.href =
-"index.html";
-
-}
-
-
-function goMarkets(){
-
-location.href =
-"market.html";
-
-}
-
-
-function goTrade(){
-
-location.href =
-"trade.html";
-
-}
-
-
-function goAssets(){
-
-location.href =
-"index.html";
-
-}
-
-</script>
-
-
-</body>
-</html>
+.verified{
+display:inline-flex;
+align-items:center;
+gap:6px;
+margin-top:18px;
+background:#dff7ef;
+color:#20aa86;
+padding:6px 13px;
+border-radius:20
