@@ -7,12 +7,14 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+
 body{
 font-family:Arial,sans-serif;
 background:#f7f7fb;
 color:#191827;
 padding-bottom:80px
 }
+
 header{
 height:64px;
 background:#fff;
@@ -25,13 +27,25 @@ position:sticky;
 top:0;
 z-index:5
 }
+
 .logo{
 font-size:23px;
 font-weight:800;
 color:#6246e5
 }
-.icons{display:flex;gap:15px;font-size:21px}
-.container{max-width:600px;margin:auto;padding:18px}
+
+.icons{
+display:flex;
+gap:15px;
+font-size:21px
+}
+
+.container{
+max-width:600px;
+margin:auto;
+padding:18px
+}
+
 .banner{
 background:linear-gradient(135deg,#7048ee,#9d72ff);
 border-radius:20px;
@@ -43,8 +57,17 @@ flex-direction:column;
 justify-content:center;
 box-shadow:0 12px 30px #7652e544
 }
-.banner h1{font-size:25px;margin-bottom:8px}
-.banner p{opacity:.9;font-size:14px}
+
+.banner h1{
+font-size:25px;
+margin-bottom:8px
+}
+
+.banner p{
+opacity:.9;
+font-size:14px
+}
+
 .deposit{
 margin-top:18px;
 background:#fff;
@@ -52,27 +75,41 @@ border-radius:18px;
 padding:18px;
 box-shadow:0 5px 20px #00000008
 }
+
 .deposit-top{
 display:flex;
 justify-content:space-between;
 align-items:center
 }
-.deposit h3{font-size:15px;color:#777}
-.balance{font-size:28px;font-weight:800;margin:8px 0}
+
+.deposit h3{
+font-size:15px;
+color:#777
+}
+
+.balance{
+font-size:28px;
+font-weight:800;
+margin:8px 0
+}
+
 .btn{
 border:0;
 background:#6848e8;
 color:white;
 padding:10px 18px;
 border-radius:10px;
-font-weight:bold
+font-weight:bold;
+cursor:pointer
 }
+
 .quick{
 display:grid;
 grid-template-columns:repeat(4,1fr);
 gap:10px;
 margin:20px 0
 }
+
 .quick div{
 background:white;
 border-radius:15px;
@@ -81,15 +118,29 @@ text-align:center;
 box-shadow:0 5px 18px #00000008;
 font-size:12px
 }
-.quick b{display:block;font-size:23px;margin-bottom:7px}
+
+.quick b{
+display:block;
+font-size:23px;
+margin-bottom:7px
+}
+
 .section-title{
 display:flex;
 justify-content:space-between;
 align-items:center;
 margin:20px 0 12px
 }
-.section-title h2{font-size:18px}
-.section-title span{color:#6848e8;font-size:13px}
+
+.section-title h2{
+font-size:18px
+}
+
+.section-title span{
+color:#6848e8;
+font-size:13px
+}
+
 .coin{
 background:#fff;
 border-radius:17px;
@@ -100,9 +151,16 @@ justify-content:space-between;
 margin-bottom:10px;
 box-shadow:0 5px 18px #00000008
 }
-.coin-left{display:flex;align-items:center;gap:12px}
+
+.coin-left{
+display:flex;
+align-items:center;
+gap:12px
+}
+
 .coin-icon{
-width:43px;height:43px;
+width:43px;
+height:43px;
 border-radius:50%;
 background:#f0edff;
 display:flex;
@@ -112,11 +170,28 @@ font-size:21px;
 font-weight:bold;
 color:#6848e8
 }
-.coin-name b{display:block}
-.coin-name small{color:#999}
-.price{text-align:right}
-.price b{display:block}
-.green{color:#20a66a;font-size:12px}
+
+.coin-name b{
+display:block
+}
+
+.coin-name small{
+color:#999
+}
+
+.price{
+text-align:right
+}
+
+.price b{
+display:block
+}
+
+.green{
+color:#20a66a;
+font-size:12px
+}
+
 .bottom{
 position:fixed;
 bottom:0;
@@ -130,17 +205,111 @@ justify-content:space-around;
 align-items:center;
 z-index:10
 }
+
 .bottom div{
 text-align:center;
 font-size:11px;
 color:#999
 }
+
 .bottom b{
 display:block;
 font-size:21px;
 margin-bottom:4px
 }
-.bottom .active{color:#6848e8}
+
+.bottom .active{
+color:#6848e8
+}
+
+/* Deposit Window */
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:#00000066;
+z-index:100;
+align-items:center;
+justify-content:center;
+padding:20px
+}
+
+.modal-box{
+width:100%;
+max-width:420px;
+background:white;
+border-radius:22px;
+padding:22px;
+box-shadow:0 20px 50px #00000033
+}
+
+.modal-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px
+}
+
+.modal-header h2{
+font-size:21px
+}
+
+.close{
+background:#f1f1f5;
+border:0;
+width:35px;
+height:35px;
+border-radius:50%;
+font-size:20px;
+cursor:pointer
+}
+
+.network{
+background:#f5f2ff;
+border-radius:12px;
+padding:13px;
+margin-bottom:16px
+}
+
+.network small{
+display:block;
+color:#777;
+margin-bottom:5px
+}
+
+.network strong{
+color:#6848e8
+}
+
+.address{
+background:#f7f7f9;
+border:1px solid #eee;
+border-radius:12px;
+padding:13px;
+font-size:13px;
+word-break:break-all;
+margin-bottom:12px
+}
+
+.copy{
+width:100%;
+padding:12px;
+border:0;
+border-radius:10px;
+background:#6848e8;
+color:white;
+font-weight:bold;
+cursor:pointer
+}
+
+.demo-note{
+margin-top:15px;
+font-size:12px;
+color:#888;
+line-height:1.5;
+text-align:center
+}
 </style>
 </head>
 
@@ -148,6 +317,7 @@ margin-bottom:4px
 
 <header>
 <div class="logo">EliteHub</div>
+
 <div class="icons">
 <span>⌕</span>
 <span>♡</span>
@@ -164,11 +334,14 @@ margin-bottom:4px
 
 <section class="deposit">
 <div class="deposit-top">
+
 <div>
 <h3>Total Balance</h3>
 <div class="balance">$12,580.40</div>
 </div>
-<button class="btn">Deposit</button>
+
+<button class="btn" onclick="openDeposit()">Deposit</button>
+
 </div>
 </section>
 
@@ -192,6 +365,7 @@ margin-bottom:4px
 <small>BTC</small>
 </div>
 </div>
+
 <div class="price">
 <b>$67,420.50</b>
 <span class="green">+2.45%</span>
@@ -206,6 +380,7 @@ margin-bottom:4px
 <small>ETH</small>
 </div>
 </div>
+
 <div class="price">
 <b>$2,485.70</b>
 <span class="green">+1.82%</span>
@@ -220,6 +395,7 @@ margin-bottom:4px
 <small>LTC</small>
 </div>
 </div>
+
 <div class="price">
 <b>$72.31</b>
 <span class="green">+3.12%</span>
@@ -239,6 +415,7 @@ margin-bottom:4px
 <small>DOT</small>
 </div>
 </div>
+
 <div class="price">
 <b>$4.18</b>
 <span class="green">+4.21%</span>
@@ -254,6 +431,62 @@ margin-bottom:4px
 <div><b>⌁</b>Market</div>
 <div><b>⌂</b>Home</div>
 </nav>
+
+<!-- Deposit Modal -->
+
+<div class="modal" id="depositModal">
+
+<div class="modal-box">
+
+<div class="modal-header">
+<h2>Deposit</h2>
+<button class="close" onclick="closeDeposit()">×</button>
+</div>
+
+<div class="network">
+<small>Network</small>
+<strong>USDT — TRC20</strong>
+</div>
+
+<div class="address" id="walletAddress">
+TTq9DKbdFbK1rjD6XymsfQF25GPJ5w6vye
+</div>
+
+<button class="copy" onclick="copyAddress()">
+Copy Address
+</button>
+
+<div class="demo-note">
+This deposit interface is part of the EliteHub experimental platform.
+Deposits are not automatically credited at this stage.
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function openDeposit(){
+document.getElementById("depositModal").style.display="flex";
+}
+
+function closeDeposit(){
+document.getElementById("depositModal").style.display="none";
+}
+
+function copyAddress(){
+
+const address =
+document.getElementById("walletAddress").innerText;
+
+navigator.clipboard.writeText(address);
+
+alert("Address copied");
+
+}
+
+</script>
 
 </body>
 </html>
