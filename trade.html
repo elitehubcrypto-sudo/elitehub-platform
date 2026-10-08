@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EliteHub - Trade</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#fff;
+color:#29292f;
+padding-bottom:78px;
+}
+
+/* TOP */
+
+.top{
+height:62px;
+display:flex;
+align-items:center;
+gap:25px;
+padding:0 18px;
+border-bottom:1px solid #eee;
+background:#fff;
+}
+
+.top-item{
+font-size:22px;
+font-weight:500;
+color:#999;
+cursor:pointer;
+}
+
+.top-item.active{
+color:#29292f;
+font-weight:700;
+}
+
+.search{
+margin-left:auto;
+font-size:27px;
+}
+
+/* PAIR */
+
+.pair{
+padding:13px 18px 8px;
+}
+
+.pair-row{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.pair-name{
+font-size:22px;
+font-weight:700;
+}
+
+.arrow{
+font-size:15px;
+}
+
+.live-price{
+font-size:18px;
+color:#e05b5b;
+}
+
+.change{
+font-size:17px;
+color:#e05b5b;
+}
+
+.spot{
+margin-top:8px;
+font-size:14px;
+color:#999;
+}
+
+/* MAIN */
+
+.trade-area{
+display:grid;
+grid-template-columns:40% 60%;
+gap:12px;
+padding:10px 18px 0;
+}
+
+/* ORDER BOOK */
+
+.order-title{
+display:grid;
+grid-template-columns:1fr 1fr;
+font-size:13px;
+color:#999;
+margin-bottom:10px;
+}
+
+.order-title span:last-child{
+text-align:right;
+}
+
+.order-row{
+display:grid;
+grid-template-columns:1fr 1fr;
+font-size:13px;
+height:29px;
+align-items:center;
+}
+
+.sell-price{
+color:#df6464;
+}
+
+.buy-price{
+color:#15a77a;
+}
+
+.volume{
+text-align:right;
+color:#333;
+}
+
+.current{
+font-size:20px;
+font-weight:700;
+color:#14a77b;
+padding:13px 0;
+}
+
+.usd-price{
+font-size:12px;
+color:#aaa;
+font-weight:400;
+margin-top:4px;
+}
+
+/* FORM */
+
+.side{
+min-width:0;
+}
+
+.buy-sell{
+display:grid;
+grid-template-columns:1fr 1fr;
+height:57px;
+margin-bottom:16px;
+overflow:hidden;
+border-radius:30px;
+background:#e5e5e5;
+}
+
+.buy{
+border:0;
+background:#10b989;
+color:white;
+font-size:19px;
+font-weight:600;
+clip-path:polygon(
+0 0,
+100% 0,
+86% 100%,
+0 100%
+);
+cursor:pointer;
+}
+
+.sell{
+border:0;
+background:#e5e5e5;
+color:#333;
+font-size:19px;
+font-weight:600;
+cursor:pointer;
+}
+
+.sell.selected{
+background:#e75b5b;
+color:white;
+}
+
+.buy.selected{
+background:#10b989;
+color:white;
+}
+
+/* ORDER TYPE */
+
+.order-type{
+height:53px;
+border:1px solid #e1e1e1;
+border-radius:7px;
+padding:0 14px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+font-size:18px;
+margin-bottom:18px;
+}
+
+.order-type span{
+color:#999;
+}
+
+/* INPUT */
+
+.input{
+height:55px;
+width:100%;
+border:1px solid #e2e2e2;
+border-radius:8px;
+padding:0 15px;
+font-size:17px;
+outline:none;
+margin-bottom:13px;
+}
+
+.input:focus{
+border-color:#10b989;
+}
+
+/* SLIDER */
+
+.max-buy{
+display:flex;
+justify-content:space-between;
+font-size:14px;
+color:#888;
+margin-bottom:12px;
+}
+
+.slider{
+position:relative;
+height:40px;
+margin:0 7px 15px;
+}
+
+.line{
+position:absolute;
+top:17px;
+left:0;
+right:0;
+height:4px;
+background:#ddd;
+border-radius:4px;
+}
+
+.dot{
+position:absolute;
+top:10px;
+width:15px;
+height:15px;
+background:white;
+border:3px solid #ccc;
+border-radius:50%;
+transform:translateX(-50%);
+}
+
+.dot.first{
+border-color:#a56ee8;
+width:42px;
+height:42px;
+top:-4px;
+background:#fff;
+}
+
+.percent{
+display:flex;
+justify-content:space-between;
+color:#aaa;
+font-size:12px;
+margin-top:4px;
+}
+
+.info{
+display:flex;
+justify-content:space-between;
+font-size:14px;
+color:#999;
+margin:10px 0;
+}
+
+.info strong{
+color:#777;
+}
+
+/* BUTTON */
+
+.trade-button{
+width:100%;
+height:55px;
+border:0;
+border-radius:30px;
+background:#10b989;
+color:white;
+font-size:18px;
+cursor:pointer;
+margin-top:5px;
+}
+
+.trade-button.sell-mode{
+background:#e75b5b;
+}
+
+/* ASSETS */
+
+.assets{
+margin-top:18px;
+border-top:8px solid #f7f7f7;
+padding:25px 28px;
+}
+
+.tabs{
+display:flex;
+gap:45px;
+font-size:18px;
+color:#777;
+margin-bottom:45px;
+}
+
+.tabs .active{
+font-weight:700;
+color:#29292f;
+}
+
+.account-title{
+font-size:20px;
+margin-bottom:28px;
+}
+
+.asset-row{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.asset-icon{
+width:45px;
+height:45px;
+border-radius:50%;
+background:#f5a623;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+}
+
+.asset-name{
+font-size:18px;
+font-weight:500;
+flex:1;
+}
+
+.asset-amount{
+text-align:right;
+}
+
+.asset-amount strong{
+display:block;
+font-size:16px;
+}
+
+.asset-amount small{
+color:#999;
+}
+
+/* BOTTOM */
+
+.bottom{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:70px;
+background:#fff;
+border-top:1px solid #eee;
+display:flex;
+justify-content:space-around;
+align-items:center;
+z-index:100;
+}
+
+.bottom div{
+width:20%;
+text-align:center;
+font-size:11px;
+color:#999;
+cursor:pointer;
+}
+
+.bottom b{
+display:block;
+font-size:22px;
+margin-bottom:4px;
+}
+
+.bottom .active{
+color:#7654bd;
+}
+
+/* TOAST */
+
+.toast{
+position:fixed;
+left:50%;
+bottom:90px;
+transform:translateX(-50%);
+background:#29292f;
+color:white;
+padding:11px 18px;
+border-radius:9px;
+display:none;
+z-index:500;
+font-size:13px;
+white-space:nowrap;
+}
+
+/* MOBILE */
+
+@media(max-width:430px){
+
+.trade-area{
+padding-left:18px;
+padding-right:18px;
+gap:10px;
+}
+
+.order-row{
+font-size:12px;
+}
+
+.current{
+font-size:18px;
+}
+
+.pair-name{
+font-size:20px;
+}
+
+.live-price,
+.change{
+font-size:15px;
+}
+
+.input{
+font-size:15px;
+}
+
+.trade-button{
+font-size:17px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- TOP -->
+
+<div class="top">
+
+<div
+class="top-item active"
+>
+Spot
+</div>
+
+<div
+class="top-item"
+onclick="showToast('Convert is simulated')"
+>
+Convert
+</div>
+
+<div
+class="search"
+>
+⌕
+</div>
+
+</div>
+
+
+<!-- PAIR -->
+
+<div class="pair">
+
+<div class="pair-row">
+
+<div
+class="pair-name"
+onclick="showPair()"
+>
+BTC/USDT ▼
+</div>
+
+<div
+class="live-price"
+id="livePrice"
+>
+Loading...
+</div>
+
+<div
+class="change"
+id="change"
+>
+--
+</div>
+
+</div>
+
+<div class="spot">
+Spot
+</div>
+
+</div>
+
+
+<!-- TRADE AREA -->
+
+<div class="trade-area">
+
+
+<!-- ORDER BOOK -->
+
+<div>
+
+<div class="order-title">
+
+<span>Price</span>
+
+<span>Volume</span>
+
+</div>
+
+
+<div id="orderBook">
+
+<div class="order-row">
+<span class="sell-price">--</span>
+<span class="volume">0.000080</span>
+</div>
+
+<div class="order-row">
+<span class="sell-price">--</span>
+<span class="volume">0.001960</span>
+</div>
+
+<div class="order-row">
+<span class="sell-price">--</span>
+<span class="volume">0.002680</span>
+</div>
+
+<div class="order-row">
+<span class="sell-price">--</span>
+<span class="volume">0.000690</span>
+</div>
+
+<div class="order-row">
+<span class="sell-price">--</span>
+<span class="volume">1.804130</span>
+</div>
+
+
+<div class="current">
+
+<div id="currentPrice">
+--
+</div>
+
+<div
+class="usd-price"
+id="usdPrice"
+>
+≈ $--
+</div>
+
+</div>
+
+
+<div class="order-row">
+<span class="buy-price">--</span>
+<span class="volume">1.722770</span>
+</div>
+
+<div class="order-row">
+<span class="buy-price">--</span>
+<span class="volume">0.000480</span>
+</div>
+
+<div class="order-row">
+<span class="buy-price">--</span>
+<span class="volume">0.000130</span>
+</div>
+
+<div class="order-row">
+<span class="buy-price">--</span>
+<span class="volume">0.000070</span>
+</div>
+
+<div class="order-row">
+<span class="buy-price">--</span>
+<span class="volume">0.000140</span>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FORM -->
+
+<div class="side">
+
+
+<div class="buy-sell">
+
+<button
+class="buy selected"
+id="buyButton"
+onclick="setSide('buy')"
+>
+Buy
+</button>
+
+<button
+class="sell"
+id="sellButton"
+onclick="setSide('sell')"
+>
+Sell
+</button>
+
+</div>
+
+
+<div class="order-type">
+
+<span>
+Market Order
+</span>
+
+<span>
+▼
+</span>
+
+</div>
+
+
+<div
+id="marketPrice"
+class="input"
+style="
+display:flex;
+align-items:center;
+color:#aaa;
+"
+>
+Market Price
+</div>
+
+
+<input
+class="input"
+id="volume"
+type="number"
+placeholder="Volume (BTC)"
+>
+
+
+<div class="max-buy">
+
+<span>
+Max Buy
+</span>
+
+<span id="maxBuy">
+0 BTC
+</span>
+
+</div>
+
+
+<div class="slider">
+
+<div class="line"></div>
+
+<div
+class="dot first"
+style="left:0%"
+></div>
+
+<div
+class="dot"
+style="left:25%"
+></div>
+
+<div
+class="dot"
+style="left:50%"
+></div>
+
+<div
+class="dot"
+style="left:75%"
+></div>
+
+<div
+class="dot"
+style="left:100%"
+></div>
+
+<div class="percent">
+
+<span>0%</span>
+<span>25%</span>
+<span>50%</span>
+<span>75%</span>
+<span>100%</span>
+
+</div>
+
+</div>
+
+
+<input
+class="input"
+id="amount"
+type="number"
+placeholder="Amount (USDT)"
+>
+
+
+<div class="info">
+
+<span>Est Fee</span>
+
+<strong id="fee">
+0.000000 BTC
+</strong>
+
+</div>
+
+
+<div class="info">
+
+<span>Available</span>
+
+<strong>
+0.00 USDT
+</strong>
+
+</div>
+
+
+<button
+class="trade-button"
+id="tradeButton"
+onclick="executeTrade()"
+>
+Buy BTC
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ASSETS -->
+
+<div class="assets">
+
+<div class="tabs">
+
+<div class="active">
+Assets
+</div>
+
+<div>
+Orders
+</div>
+
+<div>
+Order History
+</div>
+
+</div>
+
+
+<div class="account-title">
+Spot Account
+</div>
+
+
+<div class="asset-row">
+
+<div class="asset-icon">
+₿
+</div>
+
+<div class="asset-name">
+BTC
+</div>
+
+<div class="asset-amount">
+
+<strong>
+0.0000000
+</strong>
+
+<small>
+0.00 USDT
+</small>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- BOTTOM -->
+
+<div class="bottom">
+
+
+<div onclick="location.href='index.html'">
+
+<b>⌂</b>
+
+Home
+
+</div>
+
+
+<div onclick="location.href='market.html'">
+
+<b>⌁</b>
+
+Market
+
+</div>
+
+
+<div class="active">
+
+<b>⇄</b>
+
+Trade
+
+</div>
+
+
+<div onclick="showToast('Futures is simulated')">
+
+<b>◇</b>
+
+Futures
+
+</div>
+
+
+<div onclick="location.href='me.html'">
+
+<b>▢</b>
+
+Assets
+
+</div>
+
+
+</div>
+
+
+<div
+class="toast"
+id="toast"
+></div>
+
+
+<script>
+
+let side="buy";
+
+const symbol="BTCUSDT";
+
+
+function setSide(type){
+
+side=type;
+
+const buy=
+document.getElementById("buyButton");
+
+const sell=
+document.getElementById("sellButton");
+
+const button=
+document.getElementById("tradeButton");
+
+
+if(type==="buy"){
+
+buy.classList.add("selected");
+
+sell.classList.remove("selected");
+
+button.classList.remove("sell-mode");
+
+button.textContent="Buy BTC";
+
+}else{
+
+sell.classList.add("selected");
+
+buy.classList.remove("selected");
+
+button.classList.add("sell-mode");
+
+button.textContent="Sell BTC";
+
+}
+
+}
+
+
+function showToast(message){
+
+const toast=
+document.getElementById("toast");
+
+toast.textContent=message;
+
+toast.style.display="block";
+
+setTimeout(function(){
+
+toast.style.display="none";
+
+},1800);
+
+}
+
+
+function showPair(){
+
+showToast(
+"BTC/USDT pair selection will be added"
+);
+
+}
+
+
+async function loadMarket(){
+
+try{
+
+const response=
+await fetch(
+"https://api.binance.com/api/v3/ticker/24hr?symbol="+symbol
+);
+
+const data=
+await response.json();
+
+const price=
+Number(data.lastPrice);
+
+const change=
+Number(data.priceChangePercent);
+
+document.getElementById(
+"livePrice"
+).textContent=
+price.toLocaleString(
+"en-US",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+}
+);
+
+document.getElementById(
+"change"
+).textContent=
+(change>=0?"+":"")+
+change.toFixed(2)+"%";
+
+document.getElementById(
+"currentPrice"
+).textContent=
+price.toLocaleString(
+"en-US",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+}
+);
+
+document.getElementById(
+"usdPrice"
+).textContent=
+"≈ $"+
+price.toLocaleString(
+"en-US",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+}
+);
+
+
+/* ORDER BOOK SIMULATION */
+
+const rows=
+document.querySelectorAll(
+".order-row"
+);
+
+const sellOffsets=[
+1.02,
+1.01,
+1.006,
+1.003,
+1.001
+];
+
+const buyOffsets=[
+0.9999,
+0.9995,
+0.9990,
+0.9985,
+0.9980
+];
+
+
+rows.forEach(function(row,index){
+
+let p;
+
+if(index<5){
+
+p=
+price*sellOffsets[index];
+
+}else{
+
+p=
+price*buyOffsets[index-5];
+
+}
+
+row.children[0].textContent=
+p.toLocaleString(
+"en-US",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+}
+);
+
+});
+
+
+}catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+function executeTrade(){
+
+const volume=
+document.getElementById(
+"volume"
+).value;
+
+const amount=
+document.getElementById(
+"amount"
+).value;
+
+
+if(!volume && !amount){
+
+showToast(
+"Enter volume or amount"
+);
+
+return;
+
+}
+
+
+showToast(
+side==="buy"
+?
+"Buy order simulated"
+:
+"Sell order simulated"
+);
+
+
+document.getElementById(
+"volume"
+).value="";
+
+document.getElementById(
+"amount"
+).value="";
+
+}
+
+
+loadMarket();
+
+setInterval(
+loadMarket,
+5000
+);
+
+</script>
+
+</body>
+
+</html>
