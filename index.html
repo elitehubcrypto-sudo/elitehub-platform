@@ -88,7 +88,8 @@ box-shadow:0 5px 20px #00000008
 .deposit-top{
 display:flex;
 justify-content:space-between;
-align-items:center
+align-items:center;
+gap:12px
 }
 
 .deposit h3{
@@ -102,14 +103,24 @@ font-weight:800;
 margin:8px 0
 }
 
+.actions{
+display:flex;
+gap:8px;
+flex-wrap:wrap
+}
+
 .btn{
 border:0;
 background:#6848e8;
 color:white;
-padding:10px 18px;
+padding:10px 16px;
 border-radius:10px;
 font-weight:bold;
 cursor:pointer
+}
+
+.withdraw-btn{
+background:#191827
 }
 
 .quick{
@@ -326,6 +337,46 @@ font-weight:bold;
 cursor:pointer
 }
 
+.input-group{
+margin-bottom:15px
+}
+
+.input-group label{
+display:block;
+font-size:13px;
+font-weight:bold;
+color:#555;
+margin-bottom:7px
+}
+
+.input{
+width:100%;
+height:48px;
+border:1px solid #e5e5e8;
+border-radius:12px;
+padding:0 13px;
+font-size:15px;
+outline:none;
+background:#fafafd
+}
+
+.input:focus{
+border-color:#6848e8
+}
+
+.withdraw-submit{
+width:100%;
+padding:13px;
+border:0;
+border-radius:11px;
+background:#191827;
+color:white;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+margin-top:5px
+}
+
 .demo-note{
 margin-top:15px;
 font-size:12px;
@@ -388,6 +439,8 @@ $0.00
 
 </div>
 
+<div class="actions">
+
 <button
 class="btn"
 onclick="openDeposit()">
@@ -395,6 +448,16 @@ onclick="openDeposit()">
 Deposit
 
 </button>
+
+<button
+class="btn withdraw-btn"
+onclick="openWithdraw()">
+
+Withdraw
+
+</button>
+
+</div>
 
 </div>
 
@@ -1084,6 +1147,100 @@ Deposits are not automatically credited at this stage.
 </div>
 
 
+<!-- =========================
+     WITHDRAW MODAL
+========================= -->
+
+<div class="modal"
+id="withdrawModal">
+
+<div class="modal-box">
+
+
+<div class="modal-header">
+
+<h2>
+Withdraw
+</h2>
+
+<button
+class="close"
+onclick="closeWithdraw()">
+
+×
+
+</button>
+
+</div>
+
+
+<div class="network">
+
+<small>
+Network
+</small>
+
+<strong>
+USDT — TRC20
+</strong>
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+Wallet Address
+</label>
+
+<input
+class="input"
+id="withdrawAddress"
+type="text"
+placeholder="Enter wallet address">
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+Amount USDT
+</label>
+
+<input
+class="input"
+id="withdrawAmount"
+type="number"
+min="0"
+step="0.01"
+placeholder="Enter amount">
+
+</div>
+
+
+<button
+class="withdraw-submit"
+onclick="submitWithdraw()">
+
+Confirm Withdraw
+
+</button>
+
+
+<div class="demo-note">
+
+This withdrawal interface is part of the EliteHub experimental platform.
+Withdrawals are simulated and no real blockchain transaction is performed.
+
+</div>
+
+
+</div>
+
+</div>
+
+
 <script>
 
 
@@ -1123,6 +1280,80 @@ address
 alert(
 "Address copied"
 );
+
+}
+
+
+/* =========================
+   WITHDRAW
+========================= */
+
+function openWithdraw(){
+
+document.getElementById(
+"withdrawModal"
+).style.display="flex";
+
+}
+
+
+function closeWithdraw(){
+
+document.getElementById(
+"withdrawModal"
+).style.display="none";
+
+}
+
+
+function submitWithdraw(){
+
+const address =
+document.getElementById(
+"withdrawAddress"
+).value.trim();
+
+const amount =
+document.getElementById(
+"withdrawAmount"
+).value.trim();
+
+
+if(!address){
+
+alert(
+"Please enter your wallet address"
+);
+
+return;
+
+}
+
+
+if(!amount || Number(amount)<=0){
+
+alert(
+"Please enter a valid amount"
+);
+
+return;
+
+}
+
+
+alert(
+"Withdrawal request submitted for simulation"
+);
+
+document.getElementById(
+"withdrawAddress"
+).value="";
+
+document.getElementById(
+"withdrawAmount"
+).value="";
+
+closeWithdraw();
 
 }
 
