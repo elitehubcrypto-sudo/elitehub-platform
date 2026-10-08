@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
 <title>EliteHub</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0
+}
 
 body{
 font-family:Arial,sans-serif;
@@ -203,6 +212,11 @@ color:#e54848;
 font-size:12px
 }
 
+.loading{
+color:#999;
+font-size:13px
+}
+
 .bottom{
 position:fixed;
 bottom:0;
@@ -319,14 +333,19 @@ color:#888;
 line-height:1.5;
 text-align:center
 }
+
 </style>
+
 </head>
 
 <body>
 
+
 <header>
 
-<div class="logo">EliteHub</div>
+<div class="logo">
+EliteHub
+</div>
 
 <div class="icons">
 <span>⌕</span>
@@ -342,9 +361,13 @@ text-align:center
 
 <section class="banner">
 
-<h1>Welcome to EliteHub</h1>
+<h1>
+Welcome to EliteHub
+</h1>
 
-<p>Your modern crypto trading experience</p>
+<p>
+Your modern crypto trading experience
+</p>
 
 </section>
 
@@ -355,15 +378,22 @@ text-align:center
 
 <div>
 
-<h3>Total Balance</h3>
+<h3>
+Total Balance
+</h3>
 
-<div class="balance">$0.00</div>
+<div class="balance">
+$0.00
+</div>
 
 </div>
 
-<button class="btn"
+<button
+class="btn"
 onclick="openDeposit()">
+
 Deposit
+
 </button>
 
 </div>
@@ -396,16 +426,24 @@ Security
 </div>
 
 
+<!-- =========================
+     POPULAR COINS
+========================= -->
+
 <div class="section-title">
 
-<h2>Popular Coins</h2>
+<h2>
+Popular Coins
+</h2>
 
-<span>View all</span>
+<span>
+View all
+</span>
 
 </div>
 
 
-<!-- BITCOIN -->
+<!-- BTC -->
 
 <div class="coin"
 onclick="openChart('BTCUSDT','Bitcoin','BTC')">
@@ -418,9 +456,13 @@ onclick="openChart('BTCUSDT','Bitcoin','BTC')">
 
 <div class="coin-name">
 
-<b>Bitcoin</b>
+<b>
+Bitcoin
+</b>
 
-<small>BTC</small>
+<small>
+BTC
+</small>
 
 </div>
 
@@ -428,7 +470,8 @@ onclick="openChart('BTCUSDT','Bitcoin','BTC')">
 
 <div class="price">
 
-<b id="BTCUSDT-price">
+<b id="BTCUSDT-price"
+class="loading">
 Loading...
 </b>
 
@@ -441,7 +484,7 @@ Loading...
 </div>
 
 
-<!-- ETHEREUM -->
+<!-- ETH -->
 
 <div class="coin"
 onclick="openChart('ETHUSDT','Ethereum','ETH')">
@@ -454,9 +497,13 @@ onclick="openChart('ETHUSDT','Ethereum','ETH')">
 
 <div class="coin-name">
 
-<b>Ethereum</b>
+<b>
+Ethereum
+</b>
 
-<small>ETH</small>
+<small>
+ETH
+</small>
 
 </div>
 
@@ -464,7 +511,8 @@ onclick="openChart('ETHUSDT','Ethereum','ETH')">
 
 <div class="price">
 
-<b id="ETHUSDT-price">
+<b id="ETHUSDT-price"
+class="loading">
 Loading...
 </b>
 
@@ -477,7 +525,253 @@ Loading...
 </div>
 
 
-<!-- LITECOIN -->
+<!-- BNB -->
+
+<div class="coin"
+onclick="openChart('BNBUSDT','BNB','BNB')">
+
+<div class="coin-left">
+
+<div class="coin-icon">
+B
+</div>
+
+<div class="coin-name">
+
+<b>
+BNB
+</b>
+
+<small>
+BNB
+</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<b id="BNBUSDT-price"
+class="loading">
+Loading...
+</b>
+
+<span id="BNBUSDT-change">
+--
+</span>
+
+</div>
+
+</div>
+
+
+<!-- SOL -->
+
+<div class="coin"
+onclick="openChart('SOLUSDT','Solana','SOL')">
+
+<div class="coin-left">
+
+<div class="coin-icon">
+S
+</div>
+
+<div class="coin-name">
+
+<b>
+Solana
+</b>
+
+<small>
+SOL
+</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<b id="SOLUSDT-price"
+class="loading">
+Loading...
+</b>
+
+<span id="SOLUSDT-change">
+--
+</span>
+
+</div>
+
+</div>
+
+
+<!-- XRP -->
+
+<div class="coin"
+onclick="openChart('XRPUSDT','XRP','XRP')">
+
+<div class="coin-left">
+
+<div class="coin-icon">
+X
+</div>
+
+<div class="coin-name">
+
+<b>
+XRP
+</b>
+
+<small>
+XRP
+</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<b id="XRPUSDT-price"
+class="loading">
+Loading...
+</b>
+
+<span id="XRPUSDT-change">
+--
+</span>
+
+</div>
+
+</div>
+
+
+<!-- DOGE -->
+
+<div class="coin"
+onclick="openChart('DOGEUSDT','Dogecoin','DOGE')">
+
+<div class="coin-left">
+
+<div class="coin-icon">
+Ð
+</div>
+
+<div class="coin-name">
+
+<b>
+Dogecoin
+</b>
+
+<small>
+DOGE
+</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<b id="DOGEUSDT-price"
+class="loading">
+Loading...
+</b>
+
+<span id="DOGEUSDT-change">
+--
+</span>
+
+</div>
+
+</div>
+
+
+<!-- ADA -->
+
+<div class="coin"
+onclick="openChart('ADAUSDT','Cardano','ADA')">
+
+<div class="coin-left">
+
+<div class="coin-icon">
+A
+</div>
+
+<div class="coin-name">
+
+<b>
+Cardano
+</b>
+
+<small>
+ADA
+</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<b id="ADAUSDT-price"
+class="loading">
+Loading...
+</b>
+
+<span id="ADAUSDT-change">
+--
+</span>
+
+</div>
+
+</div>
+
+
+<!-- TRX -->
+
+<div class="coin"
+onclick="openChart('TRXUSDT','TRON','TRX')">
+
+<div class="coin-left">
+
+<div class="coin-icon">
+T
+</div>
+
+<div class="coin-name">
+
+<b>
+TRON
+</b>
+
+<small>
+TRX
+</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<b id="TRXUSDT-price"
+class="loading">
+Loading...
+</b>
+
+<span id="TRXUSDT-change">
+--
+</span>
+
+</div>
+
+</div>
+
+
+<!-- LTC -->
 
 <div class="coin"
 onclick="openChart('LTCUSDT','Litecoin','LTC')">
@@ -490,9 +784,13 @@ onclick="openChart('LTCUSDT','Litecoin','LTC')">
 
 <div class="coin-name">
 
-<b>Litecoin</b>
+<b>
+Litecoin
+</b>
 
-<small>LTC</small>
+<small>
+LTC
+</small>
 
 </div>
 
@@ -500,7 +798,8 @@ onclick="openChart('LTCUSDT','Litecoin','LTC')">
 
 <div class="price">
 
-<b id="LTCUSDT-price">
+<b id="LTCUSDT-price"
+class="loading">
 Loading...
 </b>
 
@@ -513,16 +812,24 @@ Loading...
 </div>
 
 
+<!-- =========================
+     MARKET
+========================= -->
+
 <div class="section-title">
 
-<h2>Market</h2>
+<h2>
+Market
+</h2>
 
-<span>View all</span>
+<span>
+View all
+</span>
 
 </div>
 
 
-<!-- POLKADOT -->
+<!-- DOT -->
 
 <div class="coin"
 onclick="openChart('DOTUSDT','Polkadot','DOT')">
@@ -535,9 +842,13 @@ D
 
 <div class="coin-name">
 
-<b>Polkadot</b>
+<b>
+Polkadot
+</b>
 
-<small>DOT</small>
+<small>
+DOT
+</small>
 
 </div>
 
@@ -545,7 +856,8 @@ D
 
 <div class="price">
 
-<b id="DOTUSDT-price">
+<b id="DOTUSDT-price"
+class="loading">
 Loading...
 </b>
 
@@ -558,14 +870,102 @@ Loading...
 </div>
 
 
+<!-- AVAX -->
+
+<div class="coin"
+onclick="openChart('AVAXUSDT','Avalanche','AVAX')">
+
+<div class="coin-left">
+
+<div class="coin-icon">
+A
+</div>
+
+<div class="coin-name">
+
+<b>
+Avalanche
+</b>
+
+<small>
+AVAX
+</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<b id="AVAXUSDT-price"
+class="loading">
+Loading...
+</b>
+
+<span id="AVAXUSDT-change">
+--
+</span>
+
+</div>
+
+</div>
+
+
+<!-- LINK -->
+
+<div class="coin"
+onclick="openChart('LINKUSDT','Chainlink','LINK')">
+
+<div class="coin-left">
+
+<div class="coin-icon">
+L
+</div>
+
+<div class="coin-name">
+
+<b>
+Chainlink
+</b>
+
+<small>
+LINK
+</small>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<b id="LINKUSDT-price"
+class="loading">
+Loading...
+</b>
+
+<span id="LINKUSDT-change">
+--
+</span>
+
+</div>
+
+</div>
+
+
 </main>
 
+
+<!-- =========================
+     BOTTOM NAV
+========================= -->
 
 <nav class="bottom">
 
 <div class="active">
 
-<b>▣</b>
+<b>
+▣
+</b>
 
 Assets
 
@@ -573,7 +973,9 @@ Assets
 
 <div>
 
-<b>◈</b>
+<b>
+◈
+</b>
 
 Contract
 
@@ -581,7 +983,9 @@ Contract
 
 <div>
 
-<b>⇄</b>
+<b>
+⇄
+</b>
 
 Trade
 
@@ -589,7 +993,9 @@ Trade
 
 <div>
 
-<b>⌁</b>
+<b>
+⌁
+</b>
 
 Market
 
@@ -597,7 +1003,9 @@ Market
 
 <div>
 
-<b>⌂</b>
+<b>
+⌂
+</b>
 
 Home
 
@@ -606,7 +1014,9 @@ Home
 </nav>
 
 
-<!-- DEPOSIT MODAL -->
+<!-- =========================
+     DEPOSIT MODAL
+========================= -->
 
 <div class="modal"
 id="depositModal">
@@ -616,11 +1026,16 @@ id="depositModal">
 
 <div class="modal-header">
 
-<h2>Deposit</h2>
+<h2>
+Deposit
+</h2>
 
-<button class="close"
+<button
+class="close"
 onclick="closeDeposit()">
+
 ×
+
 </button>
 
 </div>
@@ -628,7 +1043,9 @@ onclick="closeDeposit()">
 
 <div class="network">
 
-<small>Network</small>
+<small>
+Network
+</small>
 
 <strong>
 USDT — TRC20
@@ -645,7 +1062,8 @@ TTq9DKbdFbK1rjD6XymsfQF25GPJ5w6vye
 </div>
 
 
-<button class="copy"
+<button
+class="copy"
 onclick="copyAddress()">
 
 Copy Address
@@ -698,15 +1116,19 @@ document.getElementById(
 "walletAddress"
 ).innerText;
 
-navigator.clipboard.writeText(address);
+navigator.clipboard.writeText(
+address
+);
 
-alert("Address copied");
+alert(
+"Address copied"
+);
 
 }
 
 
 /* =========================
-   LIVE MARKET DATA
+   ALL COINS
 ========================= */
 
 const coins = [
@@ -715,35 +1137,64 @@ const coins = [
 
 "ETHUSDT",
 
+"BNBUSDT",
+
+"SOLUSDT",
+
+"XRPUSDT",
+
+"DOGEUSDT",
+
+"ADAUSDT",
+
+"TRXUSDT",
+
 "LTCUSDT",
 
-"DOTUSDT"
+"DOTUSDT",
+
+"AVAXUSDT",
+
+"LINKUSDT"
 
 ];
 
 
+/* =========================
+   LIVE PRICES
+========================= */
+
 async function loadPrices(){
 
 try{
+
 
 const response =
 await fetch(
 "https://api.binance.com/api/v3/ticker/24hr"
 );
 
+
 const data =
 await response.json();
 
 
-coins.forEach(symbol=>{
+coins.forEach(
+symbol=>{
+
 
 const coin =
 data.find(
-item=>item.symbol===symbol
+item =>
+item.symbol === symbol
 );
 
 
-if(!coin) return;
+if(!coin){
+
+return;
+
+}
 
 
 const price =
@@ -770,6 +1221,13 @@ symbol+"-change"
 );
 
 
+if(!priceElement){
+
+return;
+
+}
+
+
 priceElement.innerText =
 "$"+
 price.toLocaleString(
@@ -781,15 +1239,21 @@ maximumFractionDigits:8
 );
 
 
+priceElement.className =
+"";
+
+
 changeElement.innerText =
-(change>=0?"+":"")+
-change.toFixed(2)+"%";
+(change>=0 ? "+" : "")+
+change.toFixed(2)+
+"%";
 
 
 changeElement.className =
 change>=0
 ? "green"
 : "red";
+
 
 });
 
@@ -806,7 +1270,7 @@ error
 
 
 /* =========================
-   OPEN COIN PAGE
+   OPEN CHART
 ========================= */
 
 function openChart(
@@ -827,7 +1291,7 @@ encodeURIComponent(code);
 
 
 /* =========================
-   START LIVE PRICES
+   START
 ========================= */
 
 loadPrices();
@@ -841,6 +1305,7 @@ loadPrices,
 );
 
 </script>
+
 
 </body>
 </html>
